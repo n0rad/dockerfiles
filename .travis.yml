@@ -1,5 +1,9 @@
 services:
   - docker
 
+branches:
+  only:
+  - master
+
 script:
-- PUSH=true update-all-images.sh
+- bash -c 'PUSH=true update-all-images.sh'
