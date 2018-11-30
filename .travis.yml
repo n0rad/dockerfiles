@@ -6,4 +6,4 @@ branches:
   - master
 
 script:
-- bash -c 'PUSH=true update-all-images.sh'
+  - bash -c 'PUSH=true ./update-all-images.sh'
