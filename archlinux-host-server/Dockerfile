@@ -33,8 +33,11 @@ RUN sudo -u yaourt yaourt --noconfirm -S kubelet-bin kubeadm-bin kubectl-bin
 
 #net.ipv4.conf.default.rp_filter = 1
 #net.ipv4.conf.all.rp_filter = 1
+#RUN nohup bash -c "dockerd &" && \
+#    sleep 5 && \
+#   kubeadm config images pull
 
-RUN kubeadm config images pull
+#RUN kubeadm config images pull
 
 RUN systemctl enable \
     kubelet.service
