@@ -1,9 +1,12 @@
 services:
-  - docker
-
+- docker
 branches:
   only:
   - master
-
 script:
-  - bash -c 'PUSH=true ./update-all-images.sh'
+- bash -c 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+- bash -c 'PUSH=true ./update-all-images.sh'
+env:
+  matrix:
+  - secure: H23pmWfIPN2SxXywyyX08hslZNyE1Pvsq2RdG5yjXrmkGg8x3Dw/s0uJ70MCUjAsnB9sFvQaV6+kcWcln46Z/04IpcKOpFalHinW2Q9G6ELkovbdSUqf6BicI1SZi4Kgzdb5oyMcNbNO6NBVXX2WrIzB8XnPRkbIrRoxGCd+4e0fhb8rYhbF3+i9Cg9BeAmBgCRplE2Jin3OzyaqgWJqwQ/hx3WugkoZRjUAAxfXH/9hGX9RB4yPP8ZFwP06fyTLzZ3bVeoookS0H1KZxbvUCc813MFO64UP/ooYcgcPNE7lieqZHZSsQzGjth6bovZv1GAVF88rErnGzBA8DCssmrHZS8inMD24xvSulxgRkIvFn6LUum2pNpLKjeP30QAwrmBpdvj/dqErZmZPfz6MCfOWrYQAS1n2lgdCiEb+fQD5ml957ndek98T9AJIgtMcCcDKRo7Ol5y8iwMosdOfaXYW9m/plut7mYm5BcslwKqUYVuOcah7fl4qoMtsrTH9Fk5K0cFhJ+d9UPDAa/HgC9aviWs0+9nISSeVGEL+pQN3JVaPqSYKgebcKvria/aQfIBt+dmpOWGzhdncrt+A8PMw+DzUksjzbghE5B8CV4CNoNnUzZUu0lZ8BXV6pRqUJfuXSGmXryjPefaV+7Zf/s34sumybwgkuzl1PS12az4=
+  - secure: itzEd031hySW4emNCy+bMRyFw/v6sjr21++hJl2fjpf6EPRTFNSnYjaEmeGbdU2nH/YF/4cEuhOnGCCvqgu3eX8dNVuwzRQL4iyaU0LgjiwexktYd2rNP6l5AQszv+/RR/GTKqewB0qGCJiKIfo1HMpAwDoGjV8idCCVXBiEBeRfMr8I6LY6lcU1KbORHMw/jThG/gDCJNVRpE5DEckJqhE0i8OKNK1SyDRN1Wxar5w9FCjKjshMGF6x1J49u8yorecsNBRpz+v7PgLmAJL2GIODuYLTaoFBH+FFtT4SO09wTzP1ED0zGD1SpyPDkEK0i9/dY5K+3SUqwee4i8ZNMT7UrrUYPpO8DEuD+XdgwMf9iZXJIQ5EK2K9RTngzSsCWmLgiqOKEM0QNVvr2kRsigylw35vKKzrzcTbNISd//XHty0FBtlaXNXzvo7a7098wC8d364KwRa/6eihyNYfKhQHL4dB3p0t3pOB6NEl6eJLLRlLamlAjZbEhVMO3LgGmiDaGwgACBgdtiBPYpsNI687ucGeKq9RiMO1FyuIuIuK3icXjiTL4eID9p5jJsDV9J9UkA2gvjgfa9e3Fu0tpfEVx8cDSHgdprS6dq5YCUHYBBFmTeRjMNVW3sOirZ8PcvRerhETA0uskCKPCWFVqo+1Z22BqiO5nOUYLotsemQ=
