@@ -3,10 +3,12 @@ from n0rad/archlinux-host
 RUN pacman --noconfirm -S \
     bridge-utils \
     inetutils \
+    net-tools \
     iotop \
     docker \
     nmon \
     tcpdump \
+    dnsutils \
     rsync \
     bc \
     unzip \
@@ -19,9 +21,20 @@ RUN pacman --noconfirm -S \
     lsof \
     jq \
     intel-ucode \
-    mdadm
+    mdadm \
+    ebtables
 
-RUN sudo -u yaourt yaourt --noconfirm -S kubelet-bin
+RUN sudo -u yaourt yaourt --noconfirm -S kubelet-bin kubadm-bin kubectl-bin
+
+
+#iptables-nft
+#cni
+#crictl-bin
+
+#net.ipv4.conf.default.rp_filter = 1
+#net.ipv4.conf.all.rp_filter = 1
+
+RUN kubeadm config images pull
 
 RUN systemctl enable \
     kubelet.service

@@ -10,8 +10,8 @@ RUN pacman --noconfirm -Syu \
     grep \
     curl \
     wget \
+    iproute2 \
     iputils \
-    dnsutils \
     p7zip \
     less
 
