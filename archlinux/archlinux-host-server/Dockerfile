@@ -24,7 +24,7 @@ RUN pacman --noconfirm -S \
     mdadm \
     ebtables
 
-RUN sudo -u yaourt yaourt --noconfirm -S kubelet-bin kubeadm-bin kubectl-bin
+RUN sudo -u yaourt yaourt --noconfirm -S kubernetes-bin
 
 
 #iptables-nft
