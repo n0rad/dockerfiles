@@ -12,3 +12,6 @@ RUN pacman --noconfirm -Syu \
     bash-completion
 
 ADD rootfs /
+
+# do not allow empty root login
+RUN passwd -l root
