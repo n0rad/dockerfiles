@@ -8,5 +8,7 @@ RUN pacman --noconfirm -Syu \
     systemd-sysvcompat \
     gptfdisk \
     usbutils \
-    bash-completion \
-    pciutils
+    pciutils \
+    bash-completion
+
+ADD rootfs /
