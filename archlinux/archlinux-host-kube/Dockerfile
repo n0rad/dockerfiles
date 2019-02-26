@@ -18,6 +18,7 @@ RUN pacman --noconfirm -Syu \
     socat \
     iputils \
     net-tools \
+    conntrack-tools \
     iproute2
 
 RUN cd /tmp && \
