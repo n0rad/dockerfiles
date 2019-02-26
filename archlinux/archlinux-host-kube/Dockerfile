@@ -11,7 +11,6 @@ RUN pacman --noconfirm -Syu \
     htop \
     dfc \
     grep \
-    less \
     sudo \
     vim \
     iproute2
