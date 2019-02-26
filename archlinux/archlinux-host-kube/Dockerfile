@@ -13,6 +13,11 @@ RUN pacman --noconfirm -Syu \
     grep \
     sudo \
     vim \
+    ebtables \
+    ethtool \
+    socat \
+    iputils \
+    net-tools \
     iproute2
 
 RUN cd /tmp && \
