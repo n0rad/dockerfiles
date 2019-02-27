@@ -1,6 +1,7 @@
 FROM archlinux/base
 
 RUN pacman --noconfirm -Syu \
+    grub \
     openssh \
     linux \
     docker \
