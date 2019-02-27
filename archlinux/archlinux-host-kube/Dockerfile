@@ -2,6 +2,7 @@ FROM archlinux/base
 
 RUN pacman --noconfirm -Syu \
     syslinux \
+    gptfdisk \
     openssh \
     linux \
     docker \
