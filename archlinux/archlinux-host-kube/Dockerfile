@@ -4,17 +4,17 @@ RUN pacman --noconfirm -Syu \
     efibootmgr \
     syslinux \
     gptfdisk \
-    openssh \
     linux \
-    docker \
     intel-ucode \
+    openssh \
+    mdadm \
+    sudo \
     curl \
     wget \
-    mdadm \
     htop \
     dfc \
+    nmon \
     grep \
-    sudo \
     vim \
     ebtables \
     ethtool \
@@ -22,8 +22,11 @@ RUN pacman --noconfirm -Syu \
     iputils \
     net-tools \
     conntrack-tools \
-    iproute2
+    iproute2 \
+    docker \
+    cni-plugins
 
+# kube
 RUN cd /tmp && \
     wget -q https://dl.k8s.io/v1.13.3/kubernetes-node-linux-amd64.tar.gz && \
     tar xzf kubernetes-node-linux-amd64.tar.gz && \
