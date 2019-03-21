@@ -6,8 +6,9 @@ RUN pacman --noconfirm -Syu \
     gptfdisk \
     linux \
     intel-ucode \
-    openssh \
     mdadm \
+    openssh \
+    dhcpcd \
     sudo \
     curl \
     wget \
