@@ -14,6 +14,7 @@ RUN pacman --noconfirm -Syu \
     wget \
     htop \
     dfc \
+    ncdu \
     nmon \
     grep \
     vim \
@@ -37,3 +38,6 @@ ADD rootfs /
 
 # do not allow empty root login
 RUN passwd -l root
+
+# some cleanup
+RUN rm -Rf /var/log
