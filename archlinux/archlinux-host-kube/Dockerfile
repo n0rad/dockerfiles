@@ -6,6 +6,7 @@ RUN pacman --noconfirm -Syu \
     gptfdisk \
     linux \
     intel-ucode \
+    hdparm \
     mdadm \
     openssh \
     dhcpcd \
