@@ -22,6 +22,9 @@ RUN pacman --noconfirm -Syu \
     ebtables \
     ethtool \
     socat \
+    iotop \
+    rsync \
+    unison \
     iputils \
     net-tools \
     conntrack-tools \
