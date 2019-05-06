@@ -11,7 +11,7 @@ for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.
     currentDate=$(date '+%Y%m%d.%H%M%S')
     idFile=$(mktemp)
     
-    docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$i"
+    docker build --no-cache --iidfile=$idFile --label "date=$currentDate" -t "n0rad/$name:latest" "$i"
 
     if [ $PUSH == true ]; then
         tag=$currentDate-$(cat $idFile | cut -f2 -d: | cut -c1-8)
