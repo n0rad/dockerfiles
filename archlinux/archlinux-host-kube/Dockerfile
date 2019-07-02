@@ -1,9 +1,13 @@
 FROM archlinux/base
 
 RUN pacman --noconfirm -Syu \
+    mkinitcpio-netconf \
+    mkinitcpio-utils \
+    mkinitcpio-tinyssh \
     efibootmgr \
     syslinux \
     gptfdisk \
+    xfsprogs \
     linux \
     intel-ucode \
     hdparm \
