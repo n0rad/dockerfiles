@@ -7,9 +7,9 @@ RUN pacman --noconfirm -Syu \
     efibootmgr \
     syslinux \
     gptfdisk \
-    xfsprogs \
     linux \
     intel-ucode \
+    xfsprogs \
     hdparm \
     mdadm \
     openssh \
@@ -19,6 +19,7 @@ RUN pacman --noconfirm -Syu \
     wget \
     htop \
     dfc \
+    psmisc \
     ncdu \
     nmon \
     grep \
