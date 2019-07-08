@@ -18,6 +18,7 @@ RUN pacman --noconfirm -Syu \
     curl \
     wget \
     htop \
+    iftop \
     dfc \
     psmisc \
     ncdu \
