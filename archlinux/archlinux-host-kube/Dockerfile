@@ -1,40 +1,45 @@
 FROM archlinux/base
 
 RUN pacman --noconfirm -Syu \
-    mkinitcpio-netconf \
-    mkinitcpio-utils \
-    mkinitcpio-tinyssh \
     efibootmgr \
     syslinux \
-    gptfdisk \
+    \
     linux \
     intel-ucode \
-    xfsprogs \
+    \
+    gptfdisk \
     hdparm \
+    smartmontools \
+    xfsprogs \
     mdadm \
+    \
     openssh \
-    dhcpcd \
+    \
+    grep \
     sudo \
     curl \
     wget \
+    \
     htop \
     iftop \
     dfc \
     psmisc \
     ncdu \
     nmon \
-    grep \
+    iotop \
+    \
     vim \
+    \
     ebtables \
     ethtool \
     socat \
-    iotop \
-    rsync \
-    unison \
     iputils \
     net-tools \
     conntrack-tools \
     iproute2 \
+    \
+    rsync \
+    \
     docker \
     cni-plugins
 
