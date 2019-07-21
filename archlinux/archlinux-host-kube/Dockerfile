@@ -14,6 +14,7 @@ RUN pacman --noconfirm -Syu \
     mdadm \
     \
     openssh \
+    haveged \
     \
     grep \
     sudo \
