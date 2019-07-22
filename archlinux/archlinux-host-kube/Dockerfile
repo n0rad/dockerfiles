@@ -36,6 +36,7 @@ RUN pacman --noconfirm -Syu \
     socat \
     iputils \
     net-tools \
+    bind-tools \
     conntrack-tools \
     iproute2 \
     \
