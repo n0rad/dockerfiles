@@ -1,3 +1,3 @@
 FROM alpine
 
-RUN apk add docker
+RUN apk add docker && rm -rf /var/cache/apk/*
