@@ -13,5 +13,5 @@ RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
     echo "PubkeyAuthentication yes"  >> /etc/ssh/sshd_config 
 
 EXPOSE 22
-CMD    sh -c "[ -f ssh_host_ecdsa_key ] || ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa -b 521; \
-    exec /usr/sbin/sshd -De"
+CMD [ -f ssh_host_ecdsa_key ] || ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa -b 521; \
+    exec /usr/sbin/sshd -De
