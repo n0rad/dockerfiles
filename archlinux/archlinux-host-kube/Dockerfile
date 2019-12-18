@@ -41,7 +41,7 @@ RUN pacman --noconfirm -Syu \
     iproute2 \
     \
     rsync \
-&    \
+    \
     docker \
     cni-plugins
 
