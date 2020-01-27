@@ -1,45 +1,6 @@
-FROM archlinux/base
+FROM n0rad/archlinux-host
 
 RUN pacman --noconfirm -Syu \
-    efibootmgr \
-    syslinux \
-    \
-    linux \
-    intel-ucode \
-    \
-    gptfdisk \
-    hdparm \
-    smartmontools \
-    xfsprogs \
-    mdadm \
-    \
-    openssh \
-    haveged \
-    \
-    grep \
-    sudo \
-    curl \
-    wget \
-    \
-    htop \
-    iftop \
-    dfc \
-    psmisc \
-    ncdu \
-    nmon \
-    iotop \
-    \
-    vim \
-    \
-    ebtables \
-    ethtool \
-    socat \
-    iputils \
-    net-tools \
-    bind-tools \
-    conntrack-tools \
-    iproute2 \
-    \
     rsync \
     \
     docker \
@@ -52,9 +13,6 @@ RUN cd /tmp && \
     mv kubernetes/node/bin/{kubelet,kubectl,kubeadm} /usr/bin
 
 ADD rootfs /
-
-# do not allow empty root login
-RUN passwd -l root
 
 # some cleanup
 RUN rm -Rf /var/log
