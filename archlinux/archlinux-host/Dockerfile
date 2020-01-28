@@ -13,6 +13,7 @@ RUN pacman --noconfirm -Syu \
     xfsprogs \
     mdadm \
     \
+    systemd-sysvcompat \
     openssh \
     haveged \
     \
