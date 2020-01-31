@@ -40,7 +40,7 @@ RUN cd /tmp && \
     su -c "yay -S plex-media-player-git --noconfirm" yay
 
 
-ADD rootfs /
+# ADD rootfs /
 
 # some cleanup
 RUN rm -Rf /var/log
