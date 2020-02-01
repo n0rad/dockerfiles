@@ -22,8 +22,10 @@ RUN pacman --noconfirm -Syu \
         xorg xorg-xinit xf86-video-intel \
         xterm \
         accountsservice lightdm lightdm-gtk-greeter \
-        mate mate-extra
-        
+        networkmanager \
+        mate mate-extra \
+        docker
+
 # plex
 RUN cd /tmp && \
     wget 'https://github.com/cianmcgovern/archlinux-qt-5.9.5/releases/download/10-JAN-2020/qt5-base-595-5.9.5-1-x86_64.pkg.tar.xz' && \
