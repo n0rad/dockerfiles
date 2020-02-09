@@ -41,7 +41,7 @@ RUN pacman --noconfirm -Syu \
     conntrack-tools \
     iproute2
 
-ADD rootfs /
+# ADD rootfs /
 
 # do not allow empty root login
 RUN passwd -l root
