@@ -38,7 +38,7 @@ RUN echo $'\n\
     lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
     mate mate-extra \
     network-manager-applet \
-    mint-x-icons \
+    mint-x-icons numix-themes-darkblue \
     mate-multiload-ng-applet-gtk3 mate-menu mate-tweak \
     \
     cpio \
@@ -48,7 +48,8 @@ RUN echo $'\n\
     encfs \
     wavemon powertop \
     tcpdump wireshark-qt gnu-netcat \
-    zsh zsh-completions bash-completion zsh-autosuggestions zsh-syntax-highlighting \
+    bash-completion \
+    zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
     expect grc z thefuck \
     dconf-editor \
     keepassxc \
@@ -82,6 +83,10 @@ RUN echo $'\n\
     terraform \
     \
     " yay
+
+# RUN su -c $"yay -Syu --noconfirm \
+#      \
+#     " yay
 
 # some cleanup
 RUN rm -Rf /var/log
