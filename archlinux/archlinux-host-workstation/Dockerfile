@@ -25,7 +25,7 @@ RUN echo $'\n\
     Include = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf && \
     \
     su -c $"yay -Sy --noconfirm \
-    linux-headers \
+    linux-headers linux-firmware \
     xorg xorg-xinit xf86-video-intel xterm \
     \
     accountsservice networkmanager \
