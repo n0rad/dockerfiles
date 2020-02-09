@@ -56,12 +56,11 @@ RUN echo $'\n\
     \
     docker docker-compose \
     kubeadm-bin kubectl-bin kubelet-bin k9s \
-    kubeseal minikube-bin fluxctl-bin stern \
+    kubeseal minikube-bin fluxctl-bin stern-bin \
     \
     firefox chromium \
     gimp gnome-calculator \
     imagemagick \
-    gnome-keyring \
     go goreleaser \
     goss-bin \
     gradle maven \
@@ -71,7 +70,7 @@ RUN echo $'\n\
     youtube-dl \
     \
     visual-studio-code-bin intellij-idea-community-edition \
-    meld gitk \
+    meld \
     \
     seafile-client \
     sane xsane cups \
