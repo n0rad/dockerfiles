@@ -3,7 +3,7 @@ FROM n0rad/archlinux-host
 RUN pacman --noconfirm -Syu \
     base-devel \
     git
-
+    
 # yay
 RUN cd /tmp && \
     wget https://github.com/Jguer/yay/releases/download/v9.4.4/yay_9.4.4_x86_64.tar.gz && \
@@ -42,7 +42,7 @@ RUN cd /tmp && \
     su -c "yay -S plex-media-player-git --noconfirm" yay
 
 
-# ADD rootfs /
+ADD rootfs /
 
 # some cleanup
 RUN rm -Rf /var/log

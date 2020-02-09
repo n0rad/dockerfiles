@@ -25,11 +25,17 @@ RUN export UNAME=$UNAME UID=1000 GID=1000 && \
 
 COPY pulse-client.conf /etc/pulse/client.conf
 
-USER $UNAME
 ENV HOME=/home/$UNAME
 ENV DISPLAY=:0.0
 ENV PULSE_SERVER=unix:/run/user/1000/pulse/native
 
-CMD plexhometheater.sh
+RUN apt-get install -y libopus0 x265 x264 libvdpau1 libvdpau-va-gl1
+    # cd /usr/lib/x86_64-linux-gnu && ln -s libcec.so.3 libcec.so.3.0.1
 
-# docker run -it -v $PWD/home:/home/plex --net host --rm -v /tmp/.X11-unix:/tmp/.X11-unix --volume=/run/user/$(id -u)/pulse:/run/user/1000/pulse 
+
+# USER $UNAME
+CMD su -c plexhometheater.sh plex
+
+# xhost +
+# chmod 755 /run/user/$(id -u)/pulse
+# docker run --privileged -it -v $PWD/home:/home/plex --net host --rm -v /tmp/.X11-unix:/tmp/.X11-unix --volume=/run/user/$(id -u)/pulse:/run/user/1000/pulse  -v /lib/modules/$(uname -r):/lib/modules/$(uname -r)
