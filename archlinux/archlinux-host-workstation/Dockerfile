@@ -26,14 +26,17 @@ RUN echo $'\n\
     \
     su -c $"yay -Sy --noconfirm \
     linux-headers linux-firmware \
-    xorg xorg-xinit xf86-video-intel xterm \
+    xterm xsel \
+    xorg xorg-xinit xf86-video-intel \
     \
     accountsservice networkmanager \
+    openssh rsync \
     \
     virtualbox virt-manager vinagre qemu \
     pulseaudio \
     blueman bluez \
     wine winetricks \
+    xdg-user-dirs \
     \
     lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
     mate mate-extra \
@@ -52,26 +55,29 @@ RUN echo $'\n\
     zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
     expect grc z thefuck \
     dconf-editor \
-    keepassxc \
+    keepassxc gnome-keyring \
     guake \
     \
     docker docker-compose \
     kubeadm-bin kubectl-bin kubelet-bin k9s \
     kubeseal minikube-bin fluxctl-bin stern-bin \
+    google-cloud-sdk \
     \
     firefox chromium \
     gimp gnome-calculator \
     imagemagick \
+    \
     go goreleaser \
     goss-bin \
     gradle maven \
     npm \
+    python-pip \
     hey \
     vlc ffmpeg x264 x265 flac \
     youtube-dl \
     \
     visual-studio-code-bin intellij-idea-community-edition \
-    meld \
+    meld tig tk \
     \
     seafile-client \
     sane xsane cups \
