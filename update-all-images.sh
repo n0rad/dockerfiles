@@ -24,6 +24,6 @@ for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.
     fi
 
     if [ $PRUNE == true ]; then
-        docker system prune
+        docker system prune -f
     fi
 done
