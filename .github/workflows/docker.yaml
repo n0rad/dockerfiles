@@ -1,0 +1,12 @@
+name: Docker
+
+jobs:
+  push:
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log into registry
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+      - name: Build/Push image
+        run: bash -c 'PUSH=true ./update-all-images.sh'

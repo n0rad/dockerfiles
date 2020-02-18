@@ -24,6 +24,7 @@ RUN pacman --noconfirm -Syu \
         accountsservice lightdm lightdm-gtk-greeter \
         networkmanager \
         mate mate-extra \
+        unclutter \
         docker
 
 # plex

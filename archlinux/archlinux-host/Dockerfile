@@ -27,6 +27,7 @@ RUN pacman --noconfirm -Syu \
     dfc \
     psmisc \
     ncdu \
+    tree \
     nmon \
     iotop \
     \

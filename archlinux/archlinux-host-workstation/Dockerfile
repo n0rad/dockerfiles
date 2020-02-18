@@ -76,7 +76,7 @@ RUN echo $'\n\
     vlc ffmpeg x264 x265 flac \
     youtube-dl \
     \
-    visual-studio-code-bin intellij-idea-community-edition \
+    visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
     meld tig tk \
     \
     seafile-client \
