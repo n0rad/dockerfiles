@@ -79,7 +79,7 @@ RUN echo $'\n\
     visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
     meld tig tk \
     \
-    seafile-client \
+    seafile-client-git \
     sane xsane cups \
     sshfs \
     redshift quicktile-git \
