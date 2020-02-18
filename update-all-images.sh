@@ -4,6 +4,7 @@ set -x
 set -e
 
 PUSH="${PUSH:-false}"
+PRUNE="${PUSH:-false}"
 
 for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.git | sort); do
     name=${i##*/}
@@ -20,5 +21,9 @@ for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.
         docker push "n0rad/$name:latest"
         docker push "n0rad/$name:$tag"
         rm $idFile
+    fi
+
+    if [ $PRUNE == true ]; then
+        docker system prune
     fi
 done

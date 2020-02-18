@@ -1,11 +1,11 @@
-services:
-- docker
-branches:
-  only:
-  - master
-script:
-- bash -c 'echo "$DOCKER_PASSWORD" | docker login -u n0rad --password-stdin'
-- bash -c 'PUSH=true ./update-all-images.sh'
-env:
-  global:
-    secure: YtO+DZe4f9AR50Dt1829VrvFrK8wdhiGB4xYTOWcjZS+a2ZmjHuEqGttgbTPtUx0CMe0ftk870jhBbTcB86/ReLAclmFYuU+1plXh0lEVA6aksuJu0HCyfgy3LKZJWF/R3mmzLijDSoc78k35AEkV5dmAE/KWYoQUpqGXV6ea/Jc1WdEBumwQW7NK8ErqJR3SjYhIixSRkKkt8x359jMBZcCgRH85B0+5cbnX7jhUcRV41hHBvaJGpOf2DBLd9DjBOzZDy16YT2CQ54vhSEpx/F2iNuIhtbvTk6v1qkF1FiyGdqcWnzRxeiAPBCrbdsPSD1gmFNPyu2MVihiOpQAdyROqVwf0sUKwyBKsd/GyW/yjjIfHdsedRk8kcvNsN6WRRDzKISecKPtvJlfzhDXxAadNu5JfDAyzaiHLEa8GNdVztbg1fbf/AX5/smAKjyCHFm/ylEF5MAx8/faWy1/v7PEOdzT+Z1LB9LkJOiJFvalPNobx0iZUBLk6WFXhd2913R1yjKvS9NmWveAaED56s8oqXWgwxv6llK5cHwgLk4Ph+UQivfOa2ZQms7RV31xthCfTz1cWKdf0H/LEL8L3nJpieCAPTCTyKaWswPzA2JjKBhSM9m63qPf3LKNmVHEr6S6vC2hcHQFD7VcXUnLlnrof99hEG9/vP8YBvBjWtg=
+# services:
+# - docker
+# branches:
+#   only:
+#   - master
+# script:
+# - bash -c 'echo "$DOCKER_PASSWORD" | docker login -u n0rad --password-stdin'
+# - bash -c 'PUSH=true ./update-all-images.sh'
+# env:
+#   global:
+#     secure: YtO+DZe4f9AR50Dt1829VrvFrK8wdhiGB4xYTOWcjZS+a2ZmjHuEqGttgbTPtUx0CMe0ftk870jhBbTcB86/ReLAclmFYuU+1plXh0lEVA6aksuJu0HCyfgy3LKZJWF/R3mmzLijDSoc78k35AEkV5dmAE/KWYoQUpqGXV6ea/Jc1WdEBumwQW7NK8ErqJR3SjYhIixSRkKkt8x359jMBZcCgRH85B0+5cbnX7jhUcRV41hHBvaJGpOf2DBLd9DjBOzZDy16YT2CQ54vhSEpx/F2iNuIhtbvTk6v1qkF1FiyGdqcWnzRxeiAPBCrbdsPSD1gmFNPyu2MVihiOpQAdyROqVwf0sUKwyBKsd/GyW/yjjIfHdsedRk8kcvNsN6WRRDzKISecKPtvJlfzhDXxAadNu5JfDAyzaiHLEa8GNdVztbg1fbf/AX5/smAKjyCHFm/ylEF5MAx8/faWy1/v7PEOdzT+Z1LB9LkJOiJFvalPNobx0iZUBLk6WFXhd2913R1yjKvS9NmWveAaED56s8oqXWgwxv6llK5cHwgLk4Ph+UQivfOa2ZQms7RV31xthCfTz1cWKdf0H/LEL8L3nJpieCAPTCTyKaWswPzA2JjKBhSM9m63qPf3LKNmVHEr6S6vC2hcHQFD7VcXUnLlnrof99hEG9/vP8YBvBjWtg=
