@@ -53,7 +53,7 @@ RUN echo $'\n\
     tcpdump wireshark-qt gnu-netcat \
     bash-completion \
     zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
-    expect grc z thefuck \
+    expect grc pygmentize z thefuck \
     dconf-editor \
     keepassxc gnome-keyring \
     guake \
