@@ -24,8 +24,5 @@ RUN cd /tmp && \
     rm qt5-* && \
     su -c "yay -S plex-media-player-git --noconfirm" yay
 
-
-ADD rootfs /
-
 # some cleanup
 RUN rm -Rf /var/log
