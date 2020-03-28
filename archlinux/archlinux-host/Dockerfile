@@ -7,6 +7,7 @@ RUN pacman --noconfirm -Syu \
 
 # aur support
 RUN pacman --noconfirm -Syu \
+    wget \
     base-devel \
     git
 
