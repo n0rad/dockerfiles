@@ -11,7 +11,12 @@ for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.
     echo -e "\e[101mBuilding $name :\e[0;m"
     currentDate=$(date '+%Y%m%d.%H%M%S')
     idFile=$(mktemp)
-    
+
+    # build is too big for most CI
+    if [[ "$name" == "archlinux-host-workstation" ]]; then
+        continue
+    fi
+
     docker build --no-cache --iidfile=$idFile --label "date=$currentDate" -t "n0rad/$name:latest" "$i"
 
     if [ $PUSH == true ]; then
