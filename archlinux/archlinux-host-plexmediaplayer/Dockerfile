@@ -4,6 +4,7 @@ RUN pacman --noconfirm -Syu \
         xorg xorg-xinit xf86-video-intel \
         xterm \
         accountsservice lightdm lightdm-gtk-greeter \
+        pulseaudio \
         networkmanager \
         mate mate-extra \
         unclutter \
