@@ -6,6 +6,7 @@ RUN echo $'\n\
     Include = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf && \
     \
     su -c $"yay -Sy --noconfirm \
+    usbutils \
     linux-headers linux-firmware \
     xterm xsel \
     xorg xorg-xinit xf86-video-intel \
@@ -21,7 +22,7 @@ RUN echo $'\n\
     \
     lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
     mate mate-extra \
-    network-manager-applet \
+    network-manager-applet gvfs-mtp \
     mint-x-icons numix-themes-darkblue \
     mate-multiload-ng-applet-gtk3 mate-menu mate-tweak \
     \
@@ -46,7 +47,7 @@ RUN echo $'\n\
     \
     firefox chromium \
     gimp gnome-calculator \
-    imagemagick \
+    imagemagick perl-image-exiftool \
     \
     go goreleaser \
     goss-bin \
