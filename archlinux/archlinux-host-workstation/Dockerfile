@@ -46,6 +46,7 @@ RUN echo $'\n\
     google-cloud-sdk \
     \
     firefox chromium \
+    libreoffice-fresh \
     gimp gnome-calculator \
     imagemagick perl-image-exiftool \
     \
@@ -59,7 +60,7 @@ RUN echo $'\n\
     youtube-dl \
     \
     visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
-    meld tig tk \
+    meld tig tk the_silver_searcher \
     \
     seafile-client-git \
     sane xsane cups \

@@ -6,6 +6,7 @@ RUN pacman --noconfirm -Syu \
         accountsservice lightdm lightdm-gtk-greeter \
         pulseaudio \
         networkmanager \
+        network-manager-applet \
         mate mate-extra \
         unclutter \
         docker
