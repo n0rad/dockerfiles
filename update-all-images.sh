@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # simple script to update all images
 set -x
 set -e
