@@ -16,6 +16,7 @@ steps:
   commands:
   - sleep 5 # give docker enough time to start
   - sh -c 'echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin'
+  - ls
   - sh -c 'PRUNE=true PUSH=true ./update-all-images.sh'
 
 services:
