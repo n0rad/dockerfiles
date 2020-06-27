@@ -64,6 +64,7 @@ RUN su -c $"yay -Sy --noconfirm \
     ethtool \
     socat \
     iputils \
+    pciutils \
     net-tools \
     bind-tools \
     conntrack-tools \
