@@ -42,7 +42,7 @@ RUN echo $'\n\
     \
     docker docker-compose \
     kubeadm-bin kubectl-bin kubelet-bin k9s \
-    kubeseal minikube-bin fluxctl-bin stern-bin \
+    kubeseal fluxctl-bin stern-bin \
     google-cloud-sdk \
     \
     firefox chromium \
@@ -62,7 +62,7 @@ RUN echo $'\n\
     visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
     meld tig tk the_silver_searcher \
     \
-    seafile-client-git \
+    syncthing-gtk \
     sane xsane cups \
     sshfs \
     redshift quicktile-git \
