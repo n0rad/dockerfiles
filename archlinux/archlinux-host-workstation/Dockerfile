@@ -63,7 +63,7 @@ RUN echo $'\n\
     meld tig tk the_silver_searcher \
     \
     syncthing-gtk \
-    sane xsane cups \
+    sane xsane cups pdftk tesseract tesseract-data-fra \
     sshfs \
     redshift quicktile-git \
     screen tmux \

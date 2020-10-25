@@ -21,8 +21,6 @@ RUN curl -s https://api.github.com/repos/n0rad/memguarded/releases/latest \
     | tar xzf - --strip 1 -C /usr/bin
 
 
-# curl -s https://api.github.com/repos/n0rad/memguarded/releases/latest | grep "browser_download_url.*tar.gz" | cut -d : -f 2,3 | tr -d \" | xargs curl -L | tar xzf - --strip 1 -C /usr/bin
-
 ADD rootfs /
 
 # some cleanup
