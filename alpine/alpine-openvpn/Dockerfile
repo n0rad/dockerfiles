@@ -1,3 +1,3 @@
 FROM alpine
 
-RUN apk add --no-cache openvpn iproute2 curl
+RUN apk add --no-cache openvpn iproute2 curl speedtest-cli
