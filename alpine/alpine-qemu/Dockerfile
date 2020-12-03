@@ -1,5 +1,5 @@
 FROM alpine
 
-RUN apk add --no-cache qemu-system-x86_64 tini
+RUN apk add --no-cache qemu-system-x86_64 ovmf tini
 
-ENTRYPOINT ["/tini", "-v", "--"]
+ENTRYPOINT ["/sbin/tini", "-v", "--"]
