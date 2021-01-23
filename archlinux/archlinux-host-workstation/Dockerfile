@@ -37,7 +37,7 @@ RUN echo $'\n\
     zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
     expect grc pygmentize z thefuck \
     dconf-editor \
-    keepassxc gnome-keyring \
+    keepassxc x11-ssh-askpass \
     guake \
     \
     docker docker-compose \
