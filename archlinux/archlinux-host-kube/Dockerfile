@@ -4,6 +4,7 @@ RUN pacman --noconfirm -Syu \
     rsync \
     \
     docker \
+    open-iscsi \
     cni-plugins
 
 # kube
