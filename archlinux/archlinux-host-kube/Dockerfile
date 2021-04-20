@@ -25,4 +25,4 @@ RUN curl -s https://api.github.com/repos/n0rad/memguarded/releases/latest \
 ADD rootfs /
 
 # some cleanup
-RUN rm -Rf /var/log /etc/cni
+RUN rm -Rf /var/log /etc/cni/net.d
