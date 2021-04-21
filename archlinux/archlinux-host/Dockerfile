@@ -60,7 +60,6 @@ RUN su -c $"yay -Sy --noconfirm \
     \
     vim \
     \
-    ebtables \
     ethtool \
     socat \
     iputils \
