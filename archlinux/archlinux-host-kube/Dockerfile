@@ -3,9 +3,9 @@ FROM n0rad/archlinux-host
 RUN pacman --noconfirm -Syu \
     rsync \
     \
-    docker \
     open-iscsi \
     cni-plugins \
+    containerd \
     kubelet \
     kubectl \
     kubeadm \
