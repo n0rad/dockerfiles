@@ -7,6 +7,7 @@ RUN pacman --noconfirm -Syu \
     rsync \
     \
     open-iscsi \
+    nfs-utils \
     cni-plugins \
     containerd \
     kubelet \
