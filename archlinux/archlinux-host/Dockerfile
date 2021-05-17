@@ -1,18 +1,19 @@
 FROM archlinux:base
 
-# reflector
-RUN pacman --noconfirm -Syu \
-    reflector && \
-    reflector --country France --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
-# aur support
-RUN pacman --noconfirm -Syu \
+RUN \
+    # reflector \
+    pacman --noconfirm -Syu reflector && \
+    reflector --country France --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist && \
+    \
+    # aur support \
+    pacman --noconfirm -Sy \
     wget \
     base-devel \
-    git
-
-# yay
-RUN cd /tmp && \
+    git &&\
+    \
+    # yay \
+    cd /tmp && \
     wget https://github.com/Jguer/yay/releases/download/v9.4.4/yay_9.4.4_x86_64.tar.gz && \
     tar xvzf yay_9.4.4_x86_64.tar.gz && \
     cp yay_9.4.4_x86_64/yay /usr/bin && \
@@ -24,10 +25,10 @@ RUN cd /tmp && \
     %yay ALL=(ALL) NOPASSWD: PACMAN' > /etc/sudoers.d/yay && \
     sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf && \
     mkdir /var/lib/yay && chown yay: /var/lib/yay && \
-    passwd -l root
-
-# packages
-RUN su -c $"yay -Sy --noconfirm \
+    passwd -l root && \
+    \
+    # packages \
+    su -c $"yay -Sy --noconfirm \
     efibootmgr \
     syslinux \
     \
@@ -68,9 +69,12 @@ RUN su -c $"yay -Sy --noconfirm \
     bind-tools \
     conntrack-tools \
     iproute2 \
-    " yay
+    " yay && \
+    \
+    # cleanup \
+    rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/*
 
 ADD rootfs /
 
 # some cleanup
-RUN rm -Rf /var/log
+# RUN rm -Rf /var/log
