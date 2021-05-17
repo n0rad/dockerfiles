@@ -1,21 +1,22 @@
 FROM n0rad/archlinux-host
 
-# remove iptables so we can install iptables-nft
-RUN pacman --noconfirm -Rdd iptables
 
-RUN pacman --noconfirm -Syu \
-    rsync \
+# not sure but iptables-nft seems to break kuberouter in some cases
+RUN pacman --noconfirm -Rdd iptables &&\
     \
+    pacman --noconfirm -Syu \
+    rsync \
     open-iscsi \
     nfs-utils \
     cni-plugins \
-    containerd \
+    cri-o \
     kubelet \
     kubectl \
     kubeadm \
-    crictl
+    crictl &&\
+    \
+    pacman --noconfirm -Rdd iptables-nft && pacman --noconfirm -S iptables &&\
+    rm -Rf /var/log /etc/cni/net.d /var/cache/pacman /var/lib/pacman/sync &&\
+    rm -Rf /etc/cni/net.d
 
-ADD rootfs /
-
-# some cleanup
-RUN rm -Rf /var/log /etc/cni/net.d
+#ADD rootfs /
