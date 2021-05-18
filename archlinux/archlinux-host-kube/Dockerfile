@@ -15,6 +15,6 @@ RUN pacman --noconfirm -Rdd iptables &&\
     crictl &&\
     \
     rm -Rf /var/cache/pacman /var/lib/pacman/sync &&\
-    rm -Rf /var/log /etc/cni/net.d
+    rm -Rf /etc/cni/net.d
 
 ADD rootfs /
