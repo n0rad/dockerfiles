@@ -14,6 +14,7 @@ RUN pacman --noconfirm -Rdd iptables &&\
     kubeadm \
     crictl &&\
     \
+    pacman --noconfirm -Rdd iptables-nft && pacman --noconfirm -S iptables &&\
     rm -Rf /var/cache/pacman /var/lib/pacman/sync &&\
     rm -Rf /etc/cni/net.d
 
