@@ -1,21 +1,18 @@
 FROM n0rad/archlinux-host
 
 
-RUN pacman --noconfirm -Rdd iptables &&\
-    \
-    pacman --noconfirm -Syu \
+RUN pacman --noconfirm -Syu \
     rsync \
     open-iscsi \
     nfs-utils \
     cni-plugins \
     cri-o \
-    kubelet \
-    kubectl \
-    kubeadm \
     crictl &&\
     \
-    pacman --noconfirm -Rdd iptables-nft && pacman --noconfirm -S iptables &&\
-    rm -Rf /var/cache/pacman /var/lib/pacman/sync &&\
-    rm -Rf /etc/cni/net.d
+    cd /tmp && \
+    wget -q "https://dl.k8s.io/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/kubernetes-node-linux-amd64.tar.gz" && \
+    tar xzf kubernetes-node-linux-amd64.tar.gz && \
+    mv kubernetes/node/bin/{kubelet,kubectl,kubeadm} /usr/bin && \
+    rm -Rf /tmp/* /var/cache/pacman /var/lib/pacman/sync /etc/cni/net.d
 
 ADD rootfs /
