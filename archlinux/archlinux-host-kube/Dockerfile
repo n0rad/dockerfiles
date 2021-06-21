@@ -6,7 +6,7 @@ RUN pacman --noconfirm -Syu \
     open-iscsi \
     nfs-utils \
     cni-plugins \
-    cri-o \
+    containerd \
     crictl &&\
     \
     cd /tmp && \
