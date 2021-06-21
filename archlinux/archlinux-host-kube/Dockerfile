@@ -10,7 +10,9 @@ RUN pacman --noconfirm -Syu \
     crictl &&\
     \
     cd /tmp && \
-    wget -q "https://dl.k8s.io/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/kubernetes-node-linux-amd64.tar.gz" && \
+    VERSION=v1.21.1 && \
+    VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) && \
+    wget -q "https://dl.k8s.io/$VERSION/kubernetes-node-linux-amd64.tar.gz" && \
     tar xzf kubernetes-node-linux-amd64.tar.gz && \
     mv kubernetes/node/bin/{kubelet,kubectl,kubeadm} /usr/bin && \
     rm -Rf /tmp/* /var/cache/pacman /var/lib/pacman/sync /etc/cni/net.d
