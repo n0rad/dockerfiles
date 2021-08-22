@@ -10,6 +10,8 @@ RUN su -c $"yay -Sy --noconfirm \
     crictl \
     nvidia-container-toolkit \
     nvidia \
+    tmux \
+    usbutils \
     \
     " yay &&\
     \
