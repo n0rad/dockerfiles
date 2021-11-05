@@ -40,6 +40,7 @@ RUN \
     smartmontools \
     xfsprogs \
     mdadm \
+    dosfstools \
     \
     systemd-sysvcompat \
     openssh \
