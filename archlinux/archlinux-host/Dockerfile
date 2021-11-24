@@ -34,6 +34,7 @@ RUN \
     \
     linux \
     intel-ucode \
+    dkms \
     \
     gptfdisk \
     hdparm \

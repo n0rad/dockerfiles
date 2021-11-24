@@ -9,14 +9,14 @@ RUN su -c $"yay -Sy --noconfirm \
     cri-o \
     crictl \
     nvidia-container-toolkit \
-    nvidia \
+    nvidia-470xx-dkms \
     tmux \
     usbutils \
     \
     " yay &&\
     \
     cd /tmp && \
-    VERSION=v1.21.0 && \
+    VERSION=v1.21.6 && \
     # VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) && \
     wget -q "https://dl.k8s.io/$VERSION/kubernetes-node-linux-amd64.tar.gz" && \
     tar xzf kubernetes-node-linux-amd64.tar.gz && \
