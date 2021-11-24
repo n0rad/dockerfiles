@@ -11,7 +11,6 @@ RUN su -c $"yay -Sy --noconfirm \
     nvidia-container-toolkit \
     nvidia-470xx-dkms \
     tmux \
-    usbutils \
     \
     " yay &&\
     \

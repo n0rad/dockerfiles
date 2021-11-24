@@ -67,6 +67,7 @@ RUN \
     socat \
     iputils \
     pciutils \
+    usbutils \
     net-tools \
     bind-tools \
     conntrack-tools \
