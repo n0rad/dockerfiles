@@ -1,6 +1,10 @@
 FROM n0rad/archlinux-host
 
-RUN pacman --noconfirm -Syu \
+RUN echo $'\n\
+    [multilib]\n\
+    Include = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf && \
+    \
+    pacman --noconfirm -Syu \
         xorg xorg-xinit xf86-video-intel \
         xterm \
         accountsservice lightdm lightdm-gtk-greeter \
