@@ -1,4 +1,4 @@
-FROM archlinux/base
+FROM archlinux:base
 
 RUN pacman --noconfirm -Syu \
     grep \
