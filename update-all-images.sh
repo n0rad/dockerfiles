@@ -8,6 +8,9 @@ PRUNE="${PUSH:-false}"
 
 for i in $(find -mindepth 2 -maxdepth 2 -type d | sed -e 's/\.\///' | grep -v ^.git | sort); do
     name=${i##*/}
+    if [ "$name" == "archlinux-host-workstation" ]; then
+      continue
+    fi
     echo -e "\e[101mBuilding $name :\e[0;m"
     currentDate=$(date '+%Y%m%d.%H%M%S')
     idFile=$(mktemp)
