@@ -33,6 +33,7 @@ RUN \
     syslinux \
     \
     linux \
+    linux-headers \
     intel-ucode \
     dkms \
     \
