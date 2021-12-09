@@ -8,6 +8,7 @@ RUN pacman --noconfirm -Syu \
         networkmanager \
         network-manager-applet \
         mate mate-extra \
+        linux-firmware \
         unclutter \
         docker
 
