@@ -15,8 +15,8 @@ RUN su -c $"yay -Sy --noconfirm \
     " yay &&\
     \
     cd /tmp && \
-    VERSION=v1.22.4 && \
-    # VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) && \
+    # VERSION=v1.23.5 && \
+    VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) && \
     wget -q "https://dl.k8s.io/$VERSION/kubernetes-node-linux-amd64.tar.gz" && \
     tar xzf kubernetes-node-linux-amd64.tar.gz && \
     mv kubernetes/node/bin/{kubelet,kubectl,kubeadm} /usr/bin && \
