@@ -4,6 +4,8 @@ FROM n0rad/archlinux-host
 RUN su -c $"yay -Sy --noconfirm \
     rsync \
     open-iscsi \
+    ipset \
+    ipvsadm \
     nfs-utils \
     cni-plugins \
     cri-o \
@@ -13,6 +15,8 @@ RUN su -c $"yay -Sy --noconfirm \
     tmux \
     \
     " yay &&\
+    \
+    pacman -Rdd --noconfirm iptables && pacman -Sy iptables-nft && \
     \
     cd /tmp && \
     # VERSION=v1.23.5 && \
