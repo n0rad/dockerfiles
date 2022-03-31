@@ -16,7 +16,7 @@ RUN su -c $"yay -Sy --noconfirm \
     \
     " yay &&\
     \
-    pacman -Rdd --noconfirm iptables && pacman -Sy iptables-nft && \
+    pacman -Rdd --noconfirm iptables && pacman -S iptables-nft --noconfirm && \
     \
     cd /tmp && \
     # VERSION=v1.23.5 && \
