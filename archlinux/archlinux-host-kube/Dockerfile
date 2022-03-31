@@ -1,7 +1,7 @@
 FROM n0rad/archlinux-host
 
-
-RUN su -c $"yay -Sy --noconfirm \
+RUN pacman -Rdd --noconfirm iptables && pacman -Sy iptables-nft --noconfirm &&\
+    su -c $"yay -S --noconfirm \
     rsync \
     open-iscsi \
     ipset \
@@ -13,17 +13,12 @@ RUN su -c $"yay -Sy --noconfirm \
     nvidia-container-toolkit \
     nvidia-470xx-dkms \
     tmux \
+    kubelet \
+    kubectl \
+    kubeadm \
     \
     " yay &&\
     \
-    pacman -Rdd --noconfirm iptables && pacman -S iptables-nft --noconfirm && \
-    \
-    cd /tmp && \
-    # VERSION=v1.23.5 && \
-    VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) && \
-    wget -q "https://dl.k8s.io/$VERSION/kubernetes-node-linux-amd64.tar.gz" && \
-    tar xzf kubernetes-node-linux-amd64.tar.gz && \
-    mv kubernetes/node/bin/{kubelet,kubectl,kubeadm} /usr/bin && \
     rm -Rf /tmp/* /var/cache/pacman /var/lib/pacman/sync /etc/cni /var/log/journal
 
 ADD rootfs /
