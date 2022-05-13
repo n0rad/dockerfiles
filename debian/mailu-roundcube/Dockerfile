@@ -1,4 +1,4 @@
-FROM mailu/roundcube:1.9.10
+FROM mailu/roundcube:1.9.28
 RUN apt-get update &&\
     apt-get install -y git &&\
     apt-get clean &&\
