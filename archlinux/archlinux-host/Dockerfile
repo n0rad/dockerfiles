@@ -24,7 +24,7 @@ RUN \
     echo $'Cmnd_Alias  PACMAN = /usr/bin/pacman, /usr/bin/yay \n\
     %yay ALL=(ALL) NOPASSWD: PACMAN' > /etc/sudoers.d/yay && \
     sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf && \
-    mkdir /var/lib/yay && chown yay: /var/lib/yay && \
+    mkdir -p /var/lib/yay && chown yay: /var/lib/yay && \
     passwd -l root && \
     \
     # packages \
