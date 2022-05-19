@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:jammy
 
 # pht
 RUN apt-get update && \
