@@ -1,4 +1,4 @@
-FROM golang:1.18 as builder
+FROM golang:1.18.3 as builder
 
 RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list
 
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install --force-yes -y --no-install-recommends \
 
 RUN git clone https://github.com/coreos/ignition.git /go/src/github.com/coreos/ignition
 
-ARG VERSION=v0.31.0
+ARG VERSION=v2.14.0
 RUN cd /go/src/github.com/coreos/ignition && \
     git checkout ${VERSION} && \
     ./build
