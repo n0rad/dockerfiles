@@ -15,7 +15,7 @@ for i in $($DIR/git-changes.sh $COMMIT); do
         idFile=$(mktemp)
 
         echo_bright_red "Building $name:"
-        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$i"
+        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$name"
 
         if [ "$PUSH" = true ]; then
             echo_bright_red "Pushing $name:"
