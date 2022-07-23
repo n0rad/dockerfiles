@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:xenial-20210804
 
 # pht
 RUN apt-get update && \
