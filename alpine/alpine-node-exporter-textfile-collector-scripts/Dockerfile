@@ -2,7 +2,11 @@ FROM alpine:3.16.1
 
 RUN apk add git bash mdadm moreutils smartmontools python3 pacman && rm -rf /var/cache/apk/*
 
-RUN git clone https://github.com/prometheus-community/node-exporter-textfile-collector-scripts.git node-exporters
+ENV TEXTFILE_COLLECTOR_VERSION=e6ab839098d87332af7ea7980bb1fe8fd439e58d
+
+RUN git clone https://github.com/prometheus-community/node-exporter-textfile-collector-scripts.git node-exporters &&\
+    cd node-exporters && git checkout ${TEXTFILE_COLLECTOR_VERSION}
+
 RUN mkdir -p /var/run/node-exporter-textfile
 
 RUN echo '*/5 * * * * /node-exporters/md_info.sh | sponge /var/run/node-exporter-textfile/md_info.prom' >> /var/spool/cron/crontabs/root 
