@@ -1,5 +1,7 @@
-FROM archlinux:base
+FROM archlinux:base-20220710.0.67642
 
+# renovate: datasource=github-tags depName=Jguer/yay
+ENV YAY_VERSION=v11.1.2
 
 RUN \
     # reflector \
@@ -14,9 +16,9 @@ RUN \
     \
     # yay \
     cd /tmp && \
-    wget https://github.com/Jguer/yay/releases/download/v11.1.2/yay_11.1.2_x86_64.tar.gz && \
-    tar xvzf yay_11.1.2_x86_64.tar.gz && \
-    cp yay_11.1.2_x86_64/yay /usr/bin && \
+    wget https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_x86_64.tar.gz && \
+    tar xvzf yay_${YAY_VERSION#v*}_x86_64.tar.gz && \
+    cp yay_${YAY_VERSION#v*}_x86_64/yay /usr/bin && \
     cd / && rm -Rf /tmp/* && \
     echo "yay:x:20002:20002:yay:/var/lib/yay:/usr/bin/sh" >> /etc/passwd && \
     echo "yay:x:20002:" >> /etc/group  && \
