@@ -10,7 +10,8 @@ COMMIT="${COMMIT:-HEAD^}"
 
 for i in $($DIR/git-changes.sh $COMMIT); do
     if [[ "$i" == R:* ]]; then
-        name=${i##*:}
+        path=${i##*:}
+        
         currentDate=$(date '+%Y%m%d.%H%M%S')
         idFile=$(mktemp)
 
