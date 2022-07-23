@@ -2,8 +2,6 @@ name: Docker
 
 on:
   push:
-    branches:
-      - master
     
 jobs:
   push:
@@ -20,5 +18,11 @@ jobs:
 
       - name: Build/Push image
         run: |
-          [ "${GITHUB_REF##*/}" == "master" ] && export PUSH=true
-          hack/build-push-from-git-changes.sh
+          branch=${GITHUB_REF##*/}
+          if [ "$branch" == "master" ]; then
+            export PUSH=true
+          else
+            FIRST_COMMIT_IN_BRANCH=$(git log --pretty=format:%H origin/master.. | tail -1)
+            export COMMIT=$(git log -1 --pretty=format:%H ${FIRST_COMMIT_IN_BRANCH}^)
+          fi
+          bash -x hack/build-push-from-git-changes.sh

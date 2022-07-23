@@ -6,15 +6,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/color.sh
 
 PUSH="${PUSH:-false}"
+COMMIT="${COMMIT:-HEAD^}"
 
-for i in $($DIR/git-changes.sh 2> /dev/null); do
+for i in $($DIR/git-changes.sh $COMMIT); do
     if [[ "$i" == R:* ]]; then
         name=${i##*:}
         currentDate=$(date '+%Y%m%d.%H%M%S')
         idFile=$(mktemp)
 
         echo_bright_red "Building $name:"
-        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$i"
+        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$name"
 
         if [ "$PUSH" = true ]; then
             echo_bright_red "Pushing $name:"
