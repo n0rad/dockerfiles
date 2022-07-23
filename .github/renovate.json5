@@ -1,8 +1,9 @@
 {
   extends: [
-    "config:base"
+    "config:base",
+    "regexManagers:dockerfileVersions",
   ],
 
   automerge: true,
-  automergeType: "branch",
+  automergeType: "branch",  
 }
