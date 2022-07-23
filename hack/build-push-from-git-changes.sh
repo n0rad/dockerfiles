@@ -11,12 +11,13 @@ COMMIT="${COMMIT:-HEAD^}"
 for i in $($DIR/git-changes.sh $COMMIT); do
     if [[ "$i" == R:* ]]; then
         path=${i##*:}
+        name=${path##*/}
         
         currentDate=$(date '+%Y%m%d.%H%M%S')
         idFile=$(mktemp)
 
         echo_bright_red "Building $name:"
-        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$name"
+        docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$path"
 
         if [ "$PUSH" = true ]; then
             echo_bright_red "Pushing $name:"
