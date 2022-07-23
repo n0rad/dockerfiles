@@ -7,7 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PUSH="${PUSH:-false}"
 
-for i in $($DIR/git-changes.sh); do
+for i in $($DIR/git-changes.sh 2> /dev/null); do
     if [[ "$i" == R:* ]]; then
         name=${i##*:}
         currentDate=$(date '+%Y%m%d.%H%M%S')

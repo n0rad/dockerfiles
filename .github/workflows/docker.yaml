@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-  schedule:
-    - cron:  '0 9 * * 5'
     
 jobs:
   push:
@@ -21,4 +19,6 @@ jobs:
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
       - name: Build/Push image
-        run: bash -x hack/build-push-from-git-changes.sh
+        run: |
+          [ "${GITHUB_REF##*/}" == "master" ] && export PUSH=true
+          hack/build-push-from-git-changes.sh
