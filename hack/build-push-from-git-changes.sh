@@ -6,7 +6,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/color.sh
 
 PUSH="${PUSH:-false}"
-COMMIT="${PUSH:-HEAD^}"
+COMMIT="${COMMIT:-HEAD^}"
 
 for i in $($DIR/git-changes.sh $COMMIT); do
     if [[ "$i" == R:* ]]; then
