@@ -22,6 +22,7 @@ jobs:
           if [ "$branch" == "master" ]; then
             export PUSH=true
           else
-            export COMMIT=$(git log --pretty=format:%H origin/master.. | tail -1) # first commit in branch
+            FIRST_COMMIT_IN_BRANCH=$(git log --pretty=format:%H origin/master.. | tail -1)
+            export COMMIT=$(git log -1 --pretty=format:%H ${FIRST_COMMIT_IN_BRANCH}^)
           fi
           bash -x hack/build-push-from-git-changes.sh
