@@ -19,5 +19,4 @@ jobs:
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
       - name: Build/Push image
-        run: |
-          hack/build-push-from-git-changes.sh
+        run: bash -x hack/build-push-from-git-changes.sh
