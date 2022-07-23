@@ -18,5 +18,10 @@ jobs:
 
       - name: Build/Push image
         run: |
-          [ "${GITHUB_REF##*/}" == "master" ] && export PUSH=true
+          branch=${GITHUB_REF##*/}
+          if [ "$branch" == "master" ]; then
+            export PUSH=true
+          else
+            export COMMIT=$(git log --pretty=format:%H origin/master.. | tail -1) # first commit in branch
+          fi
           hack/build-push-from-git-changes.sh

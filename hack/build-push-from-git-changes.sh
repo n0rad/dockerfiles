@@ -6,8 +6,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/color.sh
 
 PUSH="${PUSH:-false}"
+COMMIT="${PUSH:-HEAD^}"
 
-for i in $($DIR/git-changes.sh); do
+for i in $($DIR/git-changes.sh $COMMIT); do
     if [[ "$i" == R:* ]]; then
         name=${i##*:}
         currentDate=$(date '+%Y%m%d.%H%M%S')
