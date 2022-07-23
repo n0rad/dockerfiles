@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:jammy-20220531
 
 # pht
 RUN apt-get update && \
