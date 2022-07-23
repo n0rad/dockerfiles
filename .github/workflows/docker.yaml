@@ -24,4 +24,4 @@ jobs:
           else
             export COMMIT=$(git log --pretty=format:%H origin/master.. | tail -1) # first commit in branch
           fi
-          hack/build-push-from-git-changes.sh
+          bash -x hack/build-push-from-git-changes.sh
