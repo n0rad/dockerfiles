@@ -1,7 +1,7 @@
 FROM archlinux:base-20220710.0.67642
 
 # renovate: datasource=github-tags depName=Jguer/yay
-ENV YAY_VERSION=v11.1.2
+ENV YAY_VERSION=v11.2.0
 
 RUN \
     # reflector \
