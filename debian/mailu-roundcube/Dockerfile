@@ -7,7 +7,7 @@ ENV HTLM5_NOTIFIER_VERSION=v0.6.4
 # renovate: datasource=github-tags depName=mike-kfed/roundcube-thunderbird_labels
 ENV THUNDERBIRD_LABELS_VERSION=v1.4.11
 # renovate: datasource=github-tags depName=johndoh/roundcube-contextmenu
-ENV CONTEXTMENU_VERSION=v0.9.5
+ENV CONTEXTMENU_VERSION=3.3.1
 # renovate: datasource=github-tags depName=prodrigestivill/roundcube-gravatar
 ENV GRAVATAR_VERSION=v1.6
 
