@@ -1,4 +1,4 @@
-FROM golang:1.18.4 as builder
+FROM golang:1.18.5 as builder
 
 RUN echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list
 
