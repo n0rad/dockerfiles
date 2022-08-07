@@ -1,7 +1,7 @@
 
 function apply_package_reflector {
 	pacman -Qi reflector &> /dev/null || pacman -S reflector --noconfirm
-	reflector --country France --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+	reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 }
 
 function apply_package_yay {
@@ -56,6 +56,9 @@ function system_update {
 	# update package list
 	pacman -Sy
 
+	# update mirror list
+	apply_package_reflector
+
 	# make sure keys are ok
 	pacman-key --init
 	pacman -S --noconfirm archlinux-keyring
@@ -63,7 +66,6 @@ function system_update {
 	# make sure all already installed packages are up to date
 	pacman -Su --noconfirm
 
-	apply_package_reflector
 	apply_package_yay
 	apply_default_packages
 	[ -z "$1" ] || apply_packages "$1"
