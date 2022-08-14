@@ -21,7 +21,7 @@ for i in $($DIR/git-changes.sh $COMMIT); do
 
         if [ "$PUSH" = true ]; then
             echo_bright_red "Pushing $name:"
-            tag="1.$(date '+%Y%m%d').$(date '+%H%M%S')-$(git rev-parse --short HEAD)"
+            tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | xargs printf '%d')-H$(git rev-parse --short HEAD)"
             docker tag $(cat $idFile | cut -f2 -d:) "n0rad/$name:$tag"
             docker push "n0rad/$name:latest"
             docker push "n0rad/$name:$tag"
