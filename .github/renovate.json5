@@ -6,11 +6,4 @@
 
   automerge: true,
   automergeType: "branch",  
-  "packageRules": [
-    {
-      "matchDatasources": ["docker"],
-      "versioning": "semver-coerced"
-    },
-  ],
-
 }
