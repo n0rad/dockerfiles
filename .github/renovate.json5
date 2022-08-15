@@ -10,7 +10,7 @@
     {
       matchDatasources: ["docker"],
       matchPackageNames: ["n0rad/"],
-      versioning: "semver",
+      versioning: "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?(-(?<build>.*))?$"
     }
   ],
 }
