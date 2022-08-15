@@ -1,8 +1,7 @@
-FROM archlinux:base-20220710.0.67642
+FROM n0rad/archlinux-host:1.220815.817-Ha8b04ed
 
 ADD rootfs / 
 RUN /etc/updater/system/update.sh &&\
     # cleanup &&\
     yay -c --noconfirm &&\
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
-

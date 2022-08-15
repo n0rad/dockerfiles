@@ -1,11 +1,15 @@
-FROM n0rad/archlinux-host
+#!/bin/bash
+set -e
+readonly SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+. $SCRIPT_PATH/lib.sh
 
-# packages
-RUN echo $'\n\
-    [multilib]\n\
-    Include = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf && \
-    \
-    su -c $"yay -Sy --noconfirm \
+
+grep "^\[multilib\]" /etc/pacman.conf || cat <<EOT >> /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOT
+
+system_update  " \
     usbutils \
     linux-headers linux-firmware \
     xterm xsel \
@@ -70,8 +74,5 @@ RUN echo $'\n\
     \
     openvpn networkmanager-openvpn teleport-bin \
     terraform \
-    \
-    " yay
 
-# some cleanup
-RUN rm -Rf /var/log
+"

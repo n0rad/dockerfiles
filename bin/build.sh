@@ -16,7 +16,7 @@ docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$path"
 
 if [ "$PUSH" = true ]; then
     echo_bright_red "Pushing $name:"
-    tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | xargs printf '%d')-H$(git rev-parse --short HEAD)"
+    tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
     docker tag $(cat $idFile | cut -f2 -d:) "n0rad/$name:$tag"
     docker push "n0rad/$name:latest"
     docker push "n0rad/$name:$tag"
