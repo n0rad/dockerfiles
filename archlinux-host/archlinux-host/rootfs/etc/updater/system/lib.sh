@@ -30,15 +30,15 @@ function apply_package_yay {
 }
 
 function apply_packages {
-	# remove iptables to use nft
-	pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
-
 	for i in $1; do
 		pacman -Qi $i &> /dev/null || su -c "yay -S $i --noconfirm" yay
 	done
 }
 
 function apply_default_packages {
+	# remove iptables to use nft
+	pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
+
 	apply_packages " \
 		syslinux linux intel-ucode systemd-sysvcompat efibootmgr
 		gptfdisk hdparm mdadm dosfstools xfsprogs
