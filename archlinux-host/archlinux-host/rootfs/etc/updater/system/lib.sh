@@ -1,4 +1,8 @@
 
+function echo_green {
+  echo -e "\033[0;32m$*\033[0m"
+}
+
 function apply_package_reflector {
 	pacman -Qi reflector &> /dev/null || pacman -S reflector --noconfirm
 	reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
@@ -47,26 +51,31 @@ function apply_default_packages {
 		pciutils usbutils net-tools bind-tools conntrack-tools
 		iptables-nft ethtool socat iputils iproute2
 		sudo grep curl wget downgrade
-		htop iftop lsof dfc psmisc ncdu tree nmon iotop
+		htop iftop lsof dfc psmisc ncdu tree nmon
 		vim tmux
 	"
 }
 
 function system_update {
-	# update package list
+	echo_green "Updating package list:"
 	pacman -Sy
 
-	# update mirror list
+	echo_green "Updating mirror list:"
 	apply_package_reflector
 
-	# make sure keys are ok
+	echo_green "Preparing arch keys:"
 	pacman-key --init
 	pacman -S --noconfirm archlinux-keyring
 
-	# make sure all already installed packages are up to date
+	echo_green "Updating installed packages:"
 	pacman -Su --noconfirm
-
+ 
+	echo_green "Updating yay:"
 	apply_package_yay
+
+	echo_green "Installing default packages:"
 	apply_default_packages
+
+	echo_green "Installing packages:"
 	[ -z "$1" ] || apply_packages "$1"
 }
