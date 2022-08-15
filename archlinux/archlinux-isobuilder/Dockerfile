@@ -1,10 +1,13 @@
 FROM archlinux:base-20220710.0.67642
 
-RUN pacman --noconfirm -Syu \
-    grep \
-    file \
-    sudo \
-    archiso
+RUN pacman -Sy &&\
+    pacman-key --init &&\
+    pacman -S --noconfirm archlinux-keyring &&\
+    pacman --noconfirm -Su \
+        grep \
+        file \
+        sudo \
+        archiso
 
 # ADD rootfs /
 
