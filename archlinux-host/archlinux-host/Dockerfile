@@ -1,4 +1,4 @@
-FROM archlinux:base-20220807.0.72894
+FROM archlinux:base-20220814.0.74430
 
 ADD rootfs / 
 RUN /etc/updater/system/update.sh &&\
