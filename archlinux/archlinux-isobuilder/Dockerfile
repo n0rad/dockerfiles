@@ -1,4 +1,4 @@
-FROM archlinux:base-20220828.0.78480
+FROM archlinux:base-20220904.0.80503
 
 RUN pacman -Sy &&\
     pacman-key --init &&\
