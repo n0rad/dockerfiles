@@ -61,6 +61,7 @@ function updater_update {
 	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/archlinux-host/rootfs/etc/updater/system/lib.sh -O /etc/updater/system/lib.sh
 	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/$1/rootfs/etc/updater/system/update.sh -O /etc/updater/system/update.sh
 	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/$1/rootfs/etc/updater/system/updater-update.sh -O /etc/updater/system/updater-update.sh
+	chmod +x /etc/updater/system/update.sh /etc/updater/system/updater-update.sh
 }
 
 function system_update {
