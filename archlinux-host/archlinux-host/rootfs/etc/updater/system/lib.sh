@@ -56,6 +56,13 @@ function apply_default_packages {
 	"
 }
 
+function updater_update {
+	mkdir -p /etc/updater/system
+	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/archlinux-host/rootfs/etc/updater/system/lib.sh -O /etc/updater/system/lib.sh
+	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/$1/rootfs/etc/updater/system/update.sh -O /etc/updater/system/update.sh
+	wget https://raw.githubusercontent.com/n0rad/dockerfiles/master/archlinux-host/$1/rootfs/etc/updater/system/updater-update.sh -O /etc/updater/system/updater-update.sh
+}
+
 function system_update {
 	echo_green "Updating package list:"
 	pacman -Sy
