@@ -41,7 +41,7 @@ function apply_packages {
 
 function apply_default_packages {
 	# remove iptables to use nft
-	pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
+	# pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
 
 	apply_packages " \
 		syslinux linux intel-ucode systemd-sysvcompat efibootmgr
@@ -49,7 +49,7 @@ function apply_default_packages {
 		linux-headers dkms
 		openssh smartmontools
 		pciutils usbutils net-tools bind-tools conntrack-tools
-		iptables-nft ethtool socat iputils iproute2
+		ethtool socat iputils iproute2
 		sudo grep curl wget downgrade
 		htop iftop lsof dfc psmisc ncdu tree nmon
 		vim tmux
