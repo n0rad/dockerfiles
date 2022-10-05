@@ -24,6 +24,6 @@ RUN cd /go/src/github.com/coreos/ignition && \
 
 ## 
 
-FROM debian:stable-20220912
+FROM debian:stable-20221004
 COPY --from=builder /go/src/github.com/coreos/ignition/bin/amd64/ignition /usr/bin
 ENTRYPOINT [ "/usr/bin/ignition" ]
