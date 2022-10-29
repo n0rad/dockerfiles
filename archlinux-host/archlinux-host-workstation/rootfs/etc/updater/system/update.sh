@@ -18,7 +18,6 @@ system_update  " \
     accountsservice networkmanager \
     openssh rsync \
     \
-    virtualbox virt-manager vinagre qemu \
     pulseaudio \
     blueman bluez \
     wine winetricks \
@@ -38,14 +37,14 @@ system_update  " \
     wavemon powertop \
     tcpdump wireshark-qt gnu-netcat \
     bash-completion \
-    zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
+    zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
     expect grc pygmentize z thefuck \
     dconf-editor \
     keepassxc x11-ssh-askpass \
     guake \
     \
-    docker docker-compose \
-    kubeadm-bin kubectl-bin kubelet-bin k9s \
+    docker \
+    kubeadm-bin kubectl-bin kubelet-bin k9s helm \
     kubeseal fluxctl-bin stern-bin \
     google-cloud-sdk \
     \
@@ -54,25 +53,24 @@ system_update  " \
     gimp gnome-calculator \
     imagemagick perl-image-exiftool \
     \
-    go goreleaser \
+    go \
     goss-bin \
     gradle maven \
     npm \
     python-pip \
     hey \
     vlc ffmpeg x264 x265 flac \
-    youtube-dl \
+    yt-dlp \
     \
     visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
     meld tig tk the_silver_searcher \
     \
-    syncthing-gtk \
+    syncthing-gtk-python3 \
     sane xsane cups pdftk tesseract tesseract-data-fra \
     sshfs \
     redshift quicktile-git \
     screen tmux \
     \
-    openvpn networkmanager-openvpn teleport-bin \
     terraform \
 
 "
