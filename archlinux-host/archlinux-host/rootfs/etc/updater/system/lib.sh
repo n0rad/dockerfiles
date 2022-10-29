@@ -35,7 +35,7 @@ function apply_package_yay {
 
 function apply_packages {
 	for i in $1; do
-		pacman -Qi $i &> /dev/null || su -c "yay -S $i --noconfirm" yay
+		pacman -Qi $i &> /dev/null || (echo_green "Installing $i:" && su -c "yay -S $i --noconfirm" yay)
 	done
 }
 
