@@ -38,6 +38,7 @@ system_update  " \
     tcpdump wireshark-qt gnu-netcat \
     bash-completion \
     zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
+    powerline-go oh-my-zsh-git \
     expect grc pygmentize z thefuck \
     dconf-editor \
     keepassxc x11-ssh-askpass \
