@@ -5,7 +5,7 @@ readonly SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $SCRIPT_PATH/lib.sh
 
 # remove iptables if installed so iptables-nft can be installed along kubelet
-pacman --noconfirm -Rdd iptables || true
+pacman --noconfirm -Rdd iptables && pacman --noconfirm -Sy iptables-nft
 
 system_update  " \
     haveged
