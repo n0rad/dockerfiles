@@ -14,7 +14,7 @@ system_update  " \
     haveged
     open-iscsi nfs-utils rsync
     ipset ipvsadm
-    cri-o crictl cni-plugins  
+    cri-o crictl cni-plugins runc
     kubelet kubectl kubeadm
     nvidia-container-toolkit nvidia-470xx-dkms
 "
