@@ -4,6 +4,9 @@ set -x
 readonly SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $SCRIPT_PATH/lib.sh
 
+# remove iptables to use nft
+# pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
+
 # remove iptables if installed so iptables-nft can be installed along kubelet
 pacman --noconfirm -Rdd iptables && pacman --noconfirm -Sy iptables-nft
 
