@@ -1,8 +1,6 @@
-FROM alpine:3.16.3
+FROM alpine:3.17.0
 
 RUN apk add --no-cache curl python3 ffmpeg
-
-RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # renovate: datasource=github-tags depName=ytdl-org/youtube-dl
 ENV YTDL_VERSION=2021.06.06
