@@ -68,6 +68,7 @@ system_update  " \
     \
     syncthing-gtk-python3 \
     sane xsane cups pdftk tesseract tesseract-data-fra \
+    gutenprint \
     sshfs \
     redshift quicktile-git \
     screen tmux \
