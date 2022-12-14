@@ -13,14 +13,14 @@ system_update  " \
     usbutils \
     linux-headers linux-firmware \
     xterm xsel \
-    xorg xorg-xinit xf86-video-intel \
+    xorg xorg-xinit vulkan-intel \
     \
     accountsservice networkmanager \
     openssh rsync \
     \
     pulseaudio \
     blueman bluez \
-    wine winetricks \
+    wine winetricks dxvk-bin \
     xdg-user-dirs \
     \
     lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
