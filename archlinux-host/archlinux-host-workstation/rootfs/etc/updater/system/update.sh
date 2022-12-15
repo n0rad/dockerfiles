@@ -47,7 +47,7 @@ system_update  " \
     \
     docker \
     kubeadm-bin kubectl-bin kubelet-bin k9s helm \
-    kubeseal fluxctl-bin stern-bin \
+    kubeseal flux-bin stern-bin \
     google-cloud-sdk \
     \
     firefox chromium \
