@@ -52,7 +52,7 @@ system_update  " \
     firefox chromium \
     libreoffice-fresh \
     gimp gnome-calculator \
-    imagemagick perl-image-exiftool \
+    imagemagick perl-image-exiftool webp-pixbuf-loader \
     \
     go \
     goss-bin \
