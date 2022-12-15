@@ -28,6 +28,7 @@ system_update  " \
     network-manager-applet gvfs-mtp \
     mint-x-icons numix-themes-darkblue \
     mate-multiload-ng-applet-gtk3 mate-menu mate-tweak \
+    python2-bin python2-xlib playerctl \
     \
     cpio \
     p7zip \
@@ -59,7 +60,6 @@ system_update  " \
     gradle maven \
     npm \
     python-pip \
-    python2-bin python2-xlib \
     hey \
     vlc ffmpeg x264 x265 flac \
     yt-dlp \
