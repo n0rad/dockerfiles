@@ -1,0 +1,45 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+- name: build
+  image: docker:dind
+  environment:
+    DOCKER_LOGIN:
+      from_secret: DOCKER_LOGIN
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
+  volumes:
+  - name: dockersock
+    path: /var/run
+  commands:
+  - sleep 5 # give docker enough time to start
+  - sh -c 'echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin'
+  - sh -c 'PRUNE=true PUSH=true ./update-all-images.sh'
+
+services:
+- name: docker
+  image: docker:dind
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+volumes:
+- name: dockersock
+  temp: {}
+
+---
+kind: secret
+name: DOCKER_LOGIN
+get:
+  path: docker-hub
+  name: DOCKER_LOGIN
+
+---
+kind: secret
+name: DOCKER_PASSWORD
+get:
+  path: docker-hub
+  name: DOCKER_PASSWORD
