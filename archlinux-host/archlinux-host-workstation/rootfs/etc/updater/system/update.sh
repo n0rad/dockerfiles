@@ -59,6 +59,7 @@ system_update  " \
     gradle maven \
     npm \
     python-pip \
+    python2-bin python2-xlib \
     hey \
     vlc ffmpeg x264 x265 flac \
     yt-dlp \
