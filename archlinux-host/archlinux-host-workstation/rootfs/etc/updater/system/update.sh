@@ -18,7 +18,7 @@ system_update  " \
     accountsservice networkmanager \
     openssh rsync \
     \
-    pulseaudio \
+    pulseaudio pulseaudio-bluetooth \
     blueman bluez \
     wine winetricks dxvk-bin \
     xdg-user-dirs \
@@ -51,7 +51,7 @@ system_update  " \
     google-cloud-sdk \
     \
     firefox chromium \
-    libreoffice-fresh \
+    libreoffice-fresh obsidian \
     gimp gnome-calculator \
     imagemagick perl-image-exiftool webp-pixbuf-loader \
     \
