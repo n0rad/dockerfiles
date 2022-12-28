@@ -72,7 +72,7 @@ system_update  " \
     gutenprint \
     sshfs \
     redshift quicktile-git \
-    screen tmux \
+    screen tmux tmux-cssh \
     \
     terraform \
 
