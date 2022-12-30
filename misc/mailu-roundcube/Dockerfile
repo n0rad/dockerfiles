@@ -1,4 +1,4 @@
-FROM mailu/roundcube:1.9.44
+FROM mailu/roundcube:1.9.45
 
 # renovate: datasource=github-tags depName=r3c/custom_from
 ENV CUSTOM_FROM_VERSION=1.6.7
