@@ -5,7 +5,7 @@ function echo_green {
 
 function apply_package_reflector {
 	pacman -Qi reflector &> /dev/null || pacman -S reflector --noconfirm
-	reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+	reflector --latest 20 --age 1 --country France,Germany  --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 }
 
 function apply_package_yay {
