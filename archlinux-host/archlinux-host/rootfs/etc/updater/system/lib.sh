@@ -35,6 +35,9 @@ function apply_package_yay {
 
 function apply_packages {
 	for i in $1; do
+		if $(pacman -Qeg | cut -f1 -d' ' | grep -q "^$i$") ; then
+			continue # skip installed groups
+		fi
 		pacman -Qi $i &> /dev/null || (echo_green "Installing $i:" && su -c "yay -S $i --noconfirm" yay)
 	done
 }
