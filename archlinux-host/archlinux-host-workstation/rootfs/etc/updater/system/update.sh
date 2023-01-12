@@ -65,7 +65,7 @@ system_update  " \
     yt-dlp \
     \
     visual-studio-code-bin intellij-idea-community-edition goland goland-jre \
-    meld tig tk the_silver_searcher \
+    meld tig tk the_silver_searcher github-cli  \
     \
     syncthing-gtk-python3 \
     sane xsane cups pdftk tesseract tesseract-data-fra \
@@ -74,6 +74,6 @@ system_update  " \
     redshift quicktile-git \
     screen tmux tmux-cssh \
     \
-    terraform \
+    terraform terraform-docs-bin \
 
 "
