@@ -7,7 +7,10 @@ RUN pacman -Sy &&\
         grep \
         file \
         sudo \
-        archiso
+        archiso \
+        go \
+        git \
+        make
 
 # ADD rootfs /
 
