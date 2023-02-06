@@ -10,7 +10,8 @@ RUN pacman -Sy &&\
         archiso \
         go \
         git \
-        make
+        make \
+        gcc
 
 # ADD rootfs /
 
