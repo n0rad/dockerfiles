@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install --force-yes -y --no-install-recommends \
 RUN git clone https://github.com/coreos/ignition.git /go/src/github.com/coreos/ignition
 
 # renovate: datasource=github-tags depName=coreos/ignition
-ARG IGNITION_VERSION=v2.14.0
+ARG IGNITION_VERSION=v2.15.0
 RUN cd /go/src/github.com/coreos/ignition && \
     git checkout ${IGNITION_VERSION} && \
     ./build
