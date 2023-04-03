@@ -48,7 +48,7 @@ system_update  " \
     docker \
     kubeadm-bin kubectl-bin kubelet-bin k9s helm \
     kubeseal flux-bin stern-bin \
-    google-cloud-sdk google-cloud-sdk-gke-gcloud-auth-plugin \
+    google-cloud-cli google-cloud-cli-gke-gcloud-auth-plugin \
     \
     firefox chromium \
     libreoffice-fresh obsidian \
