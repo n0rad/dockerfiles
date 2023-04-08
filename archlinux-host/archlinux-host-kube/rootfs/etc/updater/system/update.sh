@@ -6,6 +6,7 @@ readonly SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 system_update  " \
     open-iscsi nfs-utils rsync
+    xfsprogs
     ipset ipvsadm
     cri-o crictl cni-plugins runc
     kubelet kubectl kubeadm
