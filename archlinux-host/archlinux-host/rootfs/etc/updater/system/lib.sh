@@ -48,9 +48,9 @@ function apply_default_packages {
 
 	apply_packages " \
 		syslinux linux intel-ucode systemd-sysvcompat efibootmgr
-		gptfdisk hdparm mdadm dosfstools xfsprogs smartmontools
+		gptfdisk hdparm mdadm dosfstools smartmontools
 		linux-headers dkms
-		openssh wireguard-tools
+		openssh
 		pciutils usbutils net-tools bind-tools conntrack-tools
 		ethtool socat iputils iproute2
 		sudo grep curl wget downgrade
