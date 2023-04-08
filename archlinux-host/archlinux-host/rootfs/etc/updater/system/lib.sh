@@ -43,9 +43,6 @@ function apply_packages {
 }
 
 function apply_default_packages {
-	# remove iptables to use nft
-	# pacman -Qi "iptables-nft" &> /dev/null || pacman -Rdd --noconfirm "iptables"
-
 	apply_packages " \
 		syslinux linux intel-ucode systemd-sysvcompat efibootmgr
 		gptfdisk hdparm mdadm dosfstools smartmontools
