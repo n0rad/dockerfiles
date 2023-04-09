@@ -1,3 +1,3 @@
-FROM plexinc/pms-docker:1.30.0.6486-629d58034
+FROM plexinc/pms-docker:1.31.3.6868-28fc46b27
 
 RUN apt-get update && apt-get install -y libnvidia-encode-470 libnvidia-decode-470
