@@ -1,7 +1,7 @@
 FROM n0rad/archlinux-host:1.230408.1228-He161132
 
 ADD rootfs / 
-RUN pacman -Rdd iptables --noconfirm &&\
+RUN pacman -Rdd iptables --noconfirm && pacman -Sy iptables-nft --noconfirm &&\
     /etc/updater/system/update.sh &&\
     # cleanup &&\
     yay -c --noconfirm &&\
