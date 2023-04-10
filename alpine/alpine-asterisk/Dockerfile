@@ -12,5 +12,5 @@ RUN mkdir /var/lib/asterisk/sounds/fr &&\
     chown -R asterisk:asterisk /var/lib/asterisk/sounds/fr &&\
     find /var/lib/asterisk/sounds/fr -type d -exec chmod 0775 {} \;
 
-ADD rootfs /
+# ADD rootfs /
 CMD ["usr/sbin/asterisk", "-T", "-W", "-U", "asterisk", "-p", "-vvvdddfB"]
