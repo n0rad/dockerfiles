@@ -8,7 +8,7 @@ system_update  " \
     open-iscsi nfs-utils rsync
     xfsprogs
     ipset ipvsadm
-    cri-o crictl cni-plugins runc
+    containerd cri-o crictl cni-plugins runc
     kubelet kubectl kubeadm
     nvidia-container-toolkit nvidia-470xx-dkms
 "
