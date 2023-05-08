@@ -17,7 +17,7 @@ docker buildx build --platform=linux/amd64,linux/arm64 --no-cache --iidfile=$idF
 if [ "$PUSH" = true ]; then
     echo_bright_red "Pushing $name:"
     tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
-    docker tag $(cat $idFile | cut -f2 -d:) "n0rad/$name:$tag"
-    docker push "n0rad/$name:latest"
-    docker push "n0rad/$name:$tag"
+    docker buildx tag $(cat $idFile | cut -f2 -d:) "n0rad/$name:$tag"
+    docker buildx push "n0rad/$name:latest"
+    docker buildx push "n0rad/$name:$tag"
 fi
