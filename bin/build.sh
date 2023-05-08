@@ -11,13 +11,12 @@ path=$PWD
 name=${path##*/}
 idFile=$(mktemp)
 
-echo_bright_red "Building $name:"
-docker buildx build --platform=linux/amd64,linux/arm64 --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$path"
-
+tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
+BUILD_ARGS="--platform=linux/amd64,linux/arm64 --no-cache -t n0rad/$name:$tag -t n0rad/$name:latest"
 if [ "$PUSH" = true ]; then
-    echo_bright_red "Pushing $name:"
-    tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
-    docker buildx tag $(cat $idFile | cut -f2 -d:) "n0rad/$name:$tag"
-    docker buildx push "n0rad/$name:latest"
-    docker buildx push "n0rad/$name:$tag"
+    echo_bright_red "Building $name:"
+    docker buildx build $BUILD_ARGS "$path"
+else
+    echo_bright_red "Building / Pushing $name:"
+    docker buildx build $BUILD_ARGS --push "$path"
 fi
