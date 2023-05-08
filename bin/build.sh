@@ -12,7 +12,7 @@ name=${path##*/}
 idFile=$(mktemp)
 
 echo_bright_red "Building $name:"
-docker build --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$path"
+docker buildx build --platform=linux/amd64,linux/arm64 --no-cache --iidfile=$idFile -t "n0rad/$name:latest" "$path"
 
 if [ "$PUSH" = true ]; then
     echo_bright_red "Pushing $name:"
