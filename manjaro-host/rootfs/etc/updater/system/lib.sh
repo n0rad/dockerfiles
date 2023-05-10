@@ -3,11 +3,6 @@ function echo_green {
   echo -e "\033[0;32m$*\033[0m"
 }
 
-function apply_package_reflector {
-	pacman -Qi reflector &> /dev/null || pacman -S reflector --noconfirm
-	reflector --latest 20 --age 2 --country France,Germany  --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-}
-
 function apply_package_yay {
 	# yay dependencies
 	pacman -Qi wget gcc git grep &> /dev/null || pacman -S wget base-devel git --noconfirm
@@ -67,9 +62,6 @@ function updater_update {
 function system_update {
 	echo_green "Updating package list:"
 	pacman -Sy
-
-	echo_green "Updating mirror list:"
-	apply_package_reflector
 
 	echo_green "Preparing arch keys:"
 	pacman-key --init
