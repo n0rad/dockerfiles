@@ -39,3 +39,5 @@ CMD su -c plexhometheater.sh plex
 # xhost +
 # chmod 755 /run/user/$(id -u)/pulse
 # docker run --privileged -it -v $PWD/home:/home/plex --net host --rm -v /tmp/.X11-unix:/tmp/.X11-unix --volume=/run/user/$(id -u)/pulse:/run/user/1000/pulse  -v /lib/modules/$(uname -r):/lib/modules/$(uname -r)
+
+LABEL platform="linux/amd64"

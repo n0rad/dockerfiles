@@ -20,3 +20,5 @@ RUN apt-get update &&\
     git clone https://github.com/mike-kfed/roundcube-thunderbird_labels.git thunderbird_labels && git -C thunderbird_labels checkout ${THUNDERBIRD_LABELS_VERSION} &&\
     git clone https://github.com/johndoh/roundcube-contextmenu.git contextmenu && git -C contextmenu checkout ${CONTEXTMENU_VERSION} &&\
     git clone https://github.com/prodrigestivill/roundcube-gravatar.git gravatar && git -C gravatar checkout ${GRAVATAR_VERSION}
+
+LABEL platform="linux/amd64"
