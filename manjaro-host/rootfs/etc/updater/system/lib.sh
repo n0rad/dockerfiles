@@ -11,9 +11,9 @@ function apply_package_yay {
 	YAY_VERSION=v11.2.0
 	yay --version | cut -f1 -d- | grep ${YAY_VERSION} > /dev/null || {
 		cd /tmp
-		wget https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_x86_64.tar.gz
-		tar xvzf yay_${YAY_VERSION#v*}_x86_64.tar.gz
-		cp yay_${YAY_VERSION#v*}_x86_64/yay /usr/bin
+		wget https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_$(uname -m).tar.gz
+		tar xvzf yay_${YAY_VERSION#v*}_$(uname -m).tar.gz
+		cp yay_${YAY_VERSION#v*}_$(uname -m)/yay /usr/bin
 		cd / 
 		rm -Rf /tmp/yay*
 	}
