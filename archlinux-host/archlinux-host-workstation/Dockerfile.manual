@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.230503.206-Hc9f577a
+FROM n0rad/archlinux-host:1.230511.725-H209aa4e
 
 ADD rootfs / 
 RUN /etc/updater/system/update.sh &&\
