@@ -12,3 +12,5 @@ RUN apk add ca-certificates unbound-libs && rm -rf /var/cache/apk/*
 COPY --from=builder /coredns/coredns /coredns
 EXPOSE 53 53/udp
 ENTRYPOINT ["/coredns"]
+
+LABEL platform="linux/amd64"

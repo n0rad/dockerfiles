@@ -1,0 +1,7 @@
+. {
+    cache
+    # FDN, cloudflare, google
+    forward . tls://80.67.169.40 tls://1.0.0.1 tls://8.8.4.4 tls://80.67.169.12 tls://1.1.1.1 tls://8.8.8.8 {
+        policy sequential
+    }
+}
