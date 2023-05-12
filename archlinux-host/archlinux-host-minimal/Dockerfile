@@ -1,4 +1,4 @@
-FROM archlinux:base-20230430.0.146624
+FROM archlinux:base-20230507.0.148551
 
 RUN pacman -Sy --noconfirm linux intel-ucode systemd-sysvcompat openssh sudo && \
     passwd -l root && \
