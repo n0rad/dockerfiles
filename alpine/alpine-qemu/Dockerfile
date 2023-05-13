@@ -1,5 +1,5 @@
 FROM alpine:3.18.0
 
-RUN apk add --no-cache qemu-system-$(uname -m) ovmf tini
+RUN apk add --no-cache qemu-system-$(uname -m) $([ "$(uname -m)" == "x86_64" ] && echo "ovmf") tini
 
 ENTRYPOINT ["/sbin/tini", "-v", "--"]
