@@ -19,9 +19,9 @@ fi
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
 BUILD_ARGS="--platform=$platform --no-cache -t n0rad/$name:$tag -t n0rad/$name:latest"
 if [ "$PUSH" = true ]; then
-    echo_bright_red "Building $name:"
+    echo_bright_red "Building $name:$tag"
     docker buildx build $BUILD_ARGS "$path"
 else
-    echo_bright_red "Building / Pushing $name:"
+    echo_bright_red "Building / Pushing $name:$tag"
     docker buildx build $BUILD_ARGS --push "$path"
 fi
