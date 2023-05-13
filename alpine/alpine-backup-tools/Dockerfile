@@ -1,3 +1,3 @@
-FROM alpine:3.17.3
+FROM alpine:3.18.0
 
 RUN apk add --no-cache bash curl sed sshfs rsync openssh openssh-sftp-server python3 rdiff-backup
