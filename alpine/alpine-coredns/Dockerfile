@@ -8,4 +8,3 @@ RUN apk add --no-cache coredns upx &&\
 CMD [ "coredns", "-conf", "/etc/coredns/Corefile" ]
 
 ADD rootfs /
-
