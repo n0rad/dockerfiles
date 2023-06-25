@@ -1,4 +1,4 @@
-FROM manjarolinux/base:20230618
+FROM manjarolinux/base:20230625
 
 ADD rootfs / 
 RUN /etc/updater/system/update.sh &&\
