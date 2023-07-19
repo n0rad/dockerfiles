@@ -13,8 +13,6 @@ RUN pacman -Sy &&\
         make \
         gcc
 
-LABEL platform="linux/amd64"
-
 # ADD rootfs /
 
 # cd /usr/share/archiso/configs/releng

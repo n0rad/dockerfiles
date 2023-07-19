@@ -42,6 +42,3 @@ RUN ln -fs /usr/lib/os-release etc/os-release &&\
 
 ENV LANG=C.UTF-8
 CMD ["/usr/bin/bash"]
-
-
-LABEL platform="linux/arm64,linux/amd64"
