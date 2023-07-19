@@ -68,9 +68,6 @@ function system_update {
 	echo_green "Updating package list:"
 	pacman -Sy
 
-	echo_green "Updating mirror list:"
-	apply_package_reflector
-
 	echo_green "Preparing arch keys:"
 	pacman-key --init
 	pacman -S --noconfirm archlinux-keyring
