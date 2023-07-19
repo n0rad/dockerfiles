@@ -27,6 +27,7 @@ jobs:
           branch=${GITHUB_REF##*/}
           if [ "$branch" == "master" ]; then
             export PUSH=true
+            export CACHE=false
           else
             FIRST_COMMIT_IN_BRANCH=$(git log --pretty=format:%H origin/master.. | tail -1)
             export COMMIT=$(git log -1 --pretty=format:%H ${FIRST_COMMIT_IN_BRANCH}^)
