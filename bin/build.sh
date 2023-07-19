@@ -7,7 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/color.sh
 
 PUSH="${PUSH:-false}"
-CACHE=true
+CACHE="${CACHE:-true}"
 path=$PWD
 
 [ -z "$1" ] || path="$(cd "$1" && pwd)"
