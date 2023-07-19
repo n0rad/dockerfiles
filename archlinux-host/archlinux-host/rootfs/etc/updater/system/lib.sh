@@ -44,7 +44,7 @@ function apply_packages {
 
 function apply_default_packages {
 	apply_packages " \
-		syslinux linux intel-ucode systemd-sysvcompat efibootmgr
+		linux intel-ucode systemd-sysvcompat efibootmgr
 		gptfdisk hdparm mdadm dosfstools smartmontools
 		linux-headers dkms
 		openssh
