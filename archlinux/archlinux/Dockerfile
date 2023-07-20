@@ -22,7 +22,9 @@ RUN mkdir /archlinux && cd /archlinux &&\
     # cleanup FS
     rm -Rf tmp/* \
       etc/machine-id etc/hostname \
-      rm -rf etc/pacman.d/gnupg/{openpgp-revocs.d/,private-keys-v1.d/,pubring.gpg~,gnupg.S.*} \
+      etc/ca-certificates/extracted/* /etc/ssl/certs/java/cacerts \
+      etc/pacman.d/gnupg/{openpgp-revocs.d/,private-keys-v1.d/,pubring.gpg~,gnupg.S.*} \
+      /etc/pacman.d/mirrorlist \
       var/cache/pacman/pkg/* var/lib/pacman/sync/*
 
 FROM scratch
@@ -36,6 +38,7 @@ ADD rootfs-$ARCH /
 RUN ln -fs /usr/lib/os-release etc/os-release &&\
     echo "VERSION_ID=$TAG" >> /etc/os-release &&\
     update-ca-trust &&\
+    locale-gen &&\
     /usr/bin/systemd-sysusers --root / &&\
     pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
     sed -i -e 's/^root::/root:!:/' /etc/shadow

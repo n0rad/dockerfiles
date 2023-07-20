@@ -21,14 +21,18 @@ cache=
 if [ "$CACHE" != true ]; then
   cache="--no-cache"
 fi
+load=""
+if [ "$PUSH" == true ]; then
+  load="--load"
+fi
 
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
 rootImage="n0rad/$name:$tag"
 
 for p in ${platform//,/ } ; do
-  buildArgs="--platform=$p $cache --build-arg=ARCH=${p#*/} -t "$rootImage-${p#*/}"  --build-arg=TAG=$tag"
+  buildArgs="--platform=$p $cache --build-arg=ARCH=${p#*/} -t "$rootImage-${p#*/}"  --build-arg=TAG=$tag $load"
   echo_bright_red "Build $rootImage-${p#*/}"
-  docker buildx build $buildArgs "$path" --load
+  docker buildx build $buildArgs "$path"
 done
 
 if [ "$PUSH" == true ]; then
