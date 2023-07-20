@@ -36,6 +36,7 @@ ADD rootfs-$ARCH /
 RUN ln -fs /usr/lib/os-release etc/os-release &&\
     echo "VERSION_ID=$TAG" >> /etc/os-release &&\
     update-ca-trust &&\
+    locale-gen &&\
     /usr/bin/systemd-sysusers --root / &&\
     pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
     sed -i -e 's/^root::/root:!:/' /etc/shadow
