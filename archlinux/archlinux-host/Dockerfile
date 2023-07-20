@@ -1,7 +1,5 @@
 FROM n0rad/archlinux:1.230719.2022-Hecbb52f
 
-ADD rootfs /
-
 RUN \
     # yay dependencies
     pacman -Sy --needed wget git base-devel --noconfirm &&\
