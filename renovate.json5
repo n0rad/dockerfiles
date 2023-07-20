@@ -1,0 +1,85 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "prHourlyLimit": 0,
+  "branchConcurrentLimit": 0,
+  "prConcurrentLimit": 30,
+  "stabilityDays": 30,
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  "flux": {
+    "fileMatch": [".+\\.yaml$"]
+  },
+  "helm-values": {
+    "fileMatch": [".+\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": [".+\\.yaml$"]
+  },
+  // "schedule": ["every sunday"],
+  // "pre-commit": {
+  //   "enabled": true
+  // },
+  // "kubernetes": {
+  //   "fileMatch": [
+  //     "cluster/.+\\.ya?ml$",
+  //     "provision/ansible/.+\\.ya?ml.j2$"
+  //   ]
+  // },
+  "regexManagers": [
+    {
+      "description": "Docker image and tag classic helm values declaration",
+      "fileMatch": [".+\\.yaml$"],
+      "matchStrings": [
+        "image:\\s+repository: (?<depName>.+?)\\s+tag: (?<currentValue>.+?)\\s"
+      ],
+      datasourceTemplate: "docker",
+      versioningTemplate: "docker"
+    }
+  ],
+  //   {
+  //     "description": "Process CRD dependencies",
+  //     "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
+  //     "matchStrings": [
+  //       // GitRepository and Flux Kustomization where 'Git release/tag' matches 'Helm' version
+  //       "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
+  //       // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
+  //       "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
+  //     ],
+  //     "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
+  //   },
+  //   {
+  //     "description": "Process various other dependencies",
+  //     "fileMatch": [
+  //       "provision/ansible/.+\\.ya?ml$",
+  //       "cluster/.+\\.ya?ml$"
+  //     ],
+  //     "matchStrings": [
+  //       "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+  //     ],
+  //     "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+  //     "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+  //   }
+  // ],
+  packageRules: [
+    {
+      matchPackagePatterns: ["mailu"],
+      groupName: "mailu"
+    },
+    {
+      matchPackagePatterns: ["intel-gpu"],
+      groupName: "intel-gpu"
+    },
+    {
+      description: "Automatically merge all minor and patch-level updates",
+      groupName: "all non-major dependencies",
+      groupSlug: "all-minor-patch",
+      matchPackagePatterns: ["*"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+      automergeType: "branch",
+    },
+  ]
+}
