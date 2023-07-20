@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.230720.648-H7448496-arm64
+FROM n0rad/archlinux:1.230720.752-Hd03ca57-arm64
 
 RUN \
     # yay dependencies
