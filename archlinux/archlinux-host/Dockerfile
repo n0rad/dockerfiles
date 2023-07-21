@@ -27,4 +27,4 @@ RUN \
       vim tmux \
      " yay &&\
     # cleanup
-    rm -Rf /tmp/* /var/cache/pacman /var/lib/pacman/sync
+    rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*

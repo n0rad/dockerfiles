@@ -24,7 +24,7 @@ RUN mkdir /archlinux && cd /archlinux &&\
       etc/machine-id etc/hostname \
       etc/ca-certificates/extracted/* /etc/ssl/certs/java/cacerts \
       etc/pacman.d/gnupg/{openpgp-revocs.d/,private-keys-v1.d/,pubring.gpg~,gnupg.S.*} \
-      /etc/pacman.d/mirrorlist \
+      etc/pacman.d/mirrorlist \
       var/cache/pacman/pkg/* var/lib/pacman/sync/*
 
 FROM scratch
