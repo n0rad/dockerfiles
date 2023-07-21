@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.230721.1533-H8d27ee8-arm64 AS builder
+FROM n0rad/archlinux:1.230719.1935-Hd54b5fd AS builder
 
 ADD rootfs-builder /
 
