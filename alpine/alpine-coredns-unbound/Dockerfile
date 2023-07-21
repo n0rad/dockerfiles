@@ -1,4 +1,4 @@
-FROM alpine:3.18.0 AS builder
+FROM alpine:3.18.2 AS builder
 
 RUN apk add go git unbound-dev make && rm -rf /var/cache/apk/*
 RUN git clone https://github.com/coredns/coredns.git && \
@@ -7,7 +7,7 @@ RUN git clone https://github.com/coredns/coredns.git && \
     make CGO_ENABLED=1
 
 
-FROM alpine:3.18.0
+FROM alpine:3.18.2
 RUN apk add ca-certificates unbound-libs && rm -rf /var/cache/apk/*
 COPY --from=builder /coredns/coredns /coredns
 EXPOSE 53 53/udp
