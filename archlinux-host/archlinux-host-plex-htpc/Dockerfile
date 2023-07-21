@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.230721.1059-H0ac306c-arm64
+FROM n0rad/archlinux-host:1.230721.1551-H8d27ee8-arm64
 
 ADD rootfs / 
 RUN pacman -Rdd iptables --noconfirm &&\
