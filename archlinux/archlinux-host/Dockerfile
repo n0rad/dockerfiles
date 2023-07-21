@@ -8,11 +8,11 @@ RUN \
     echo "yay:x:20002:20002:yay:/var/lib/yay:/usr/bin/sh" >> /etc/passwd &&\
     echo "yay:x:20002:" >> /etc/group &&\
     echo "yay:x:20002::::::" >> /etc/shadow &&\
-    echo -e "Cmnd_Alias  PACMAN = /usr/bin/pacman, /usr/bin/yay\n%yay ALL=(ALL) NOPASSWD: PACMAN" > /etc/sudoers.d/yay &&\
+    echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay" > /etc/sudoers.d/yay &&\
     # run yay to install yay
     YAY_VERSION=v11.2.0 &&\
     wget -qO- https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_$(uname -m).tar.gz | tar xvz -C /tmp &&\
-    echo -e "Cmnd_Alias  PACMAN = /usr/bin/pacman, /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay\n%yay ALL=(ALL) NOPASSWD: PACMAN" > /etc/sudoers.d/tmp_yay &&\
+    echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay" > /etc/sudoers.d/tmp_yay &&\
     su -c "/tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay -S yay-bin --noconfirm" yay &&\
     rm /etc/sudoers.d/tmp_yay &&\
     \
