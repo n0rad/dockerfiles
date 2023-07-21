@@ -3,7 +3,8 @@ FROM n0rad/archlinux:1.230719.1935-Hd54b5fd AS builder
 ADD rootfs-builder /
 
 # reinstall pacman to have the default config
-RUN mv /etc/pacman.conf /etc/pacman.conf-build &&\
+RUN pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
+    mv /etc/pacman.conf /etc/pacman.conf-build &&\
     pacman -Sy pacman --noconfirm --config=/etc/pacman.conf-build &&\
     cat /etc/pacman.d/noextract.conf >> /etc/pacman.conf
 
