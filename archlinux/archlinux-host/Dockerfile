@@ -9,6 +9,7 @@ RUN \
     echo "yay:x:20002:" >> /etc/group &&\
     echo "yay:x:20002::::::" >> /etc/shadow &&\
     echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay" > /etc/sudoers.d/yay &&\
+    mkdir -p /var/lib/yay && chown yay: /var/lib/yay &&\
     # run yay to install yay
     YAY_VERSION=v11.2.0 &&\
     wget -qO- https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_$(uname -m).tar.gz | tar xvz -C /tmp &&\
