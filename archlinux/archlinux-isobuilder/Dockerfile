@@ -13,5 +13,7 @@ RUN pacman -Sy &&\
         make \
         gcc
 
+LABEL platform="linux/amd64"
+
 # cd /usr/share/archiso/configs/releng
 # ./build.sh
