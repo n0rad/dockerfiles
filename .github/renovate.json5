@@ -6,7 +6,7 @@
 
   automerge: true,
   automergeType: "branch",
-  ignorePaths: ["archlinux/**"],
+  ignorePaths: ["archlinux/archlinux/**"],
   packageRules: [
     {
       matchDatasources: ["docker"],
