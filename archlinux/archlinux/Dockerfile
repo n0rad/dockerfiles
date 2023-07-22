@@ -18,6 +18,8 @@ RUN mkdir /archlinux && cd /archlinux &&\
     mkdir -p etc/ && cp /etc/pacman.conf etc/ && cat /etc/pacman.d/noextract.conf >> etc/pacman.conf &&\
     # Install base
     pacman -r . -Sy --noconfirm base &&\
+    # Add specific arch fs files
+    cp -a /rootfs-$(uname -m)/* . &&\
     # Install Arch Linux ARM keyring if available
     (pacman -r . -S --noconfirm archlinuxarm-keyring || true) &&\
     # cleanup FS
@@ -25,25 +27,22 @@ RUN mkdir /archlinux && cd /archlinux &&\
       etc/machine-id etc/hostname \
       etc/ca-certificates/extracted/* /etc/ssl/certs/java/cacerts \
       etc/pacman.d/gnupg/{openpgp-revocs.d/,private-keys-v1.d/,pubring.gpg~,gnupg.S.*} \
-      etc/pacman.d/mirrorlist \
       var/cache/pacman/pkg/* var/lib/pacman/sync/*
 
 FROM scratch
 ARG TAG=0.0.0
-ARG ARCH
 
 COPY --from=builder /archlinux /
 ADD rootfs /
-ADD rootfs-$ARCH /
 
-RUN ln -fs /usr/lib/os-release etc/os-release &&\
+RUN pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
+    ln -fs /usr/lib/os-release etc/os-release &&\
     echo "VERSION_ID=$TAG" >> /etc/os-release &&\
     update-ca-trust &&\
     locale-gen &&\
     /usr/bin/systemd-sysusers --root / &&\
-    pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
     sed -i -e 's/^root::/root:!:/' /etc/shadow
 
-ENV LANG=C.UTF-8
+ENV LANG=en_US.UTF-8
 CMD ["/usr/bin/bash"]
 

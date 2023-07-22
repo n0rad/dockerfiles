@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
-set -x
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 . $DIR/color.sh
 
 PUSH="${PUSH:-false}"
-CACHE="${CACHE:-true}"
+LOAD="${LOAD:-false}"
 path=$PWD
 
 [ -z "$1" ] || path="$(cd "$1" && pwd)"
@@ -17,36 +16,45 @@ platformLabel=$(cat "$path/Dockerfile" | grep -i "^label " | awk -F "[ =]*" '{pr
 if [ "$platformLabel" != "" ]; then
     platform="$platformLabel"
 fi
-cache=
-if [ "$CACHE" != true ]; then
-  cache="--no-cache"
-fi
-load=""
-if [ "$PUSH" == true ]; then
-  load="--load"
-fi
 
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
 rootImage="n0rad/$name:$tag"
-
-for p in ${platform//,/ } ; do
-  buildArgs="--platform=$p $cache --build-arg=ARCH=${p#*/} -t "$rootImage-${p#*/}"  --build-arg=TAG=$tag $load"
-  echo_bright_red "Build $rootImage-${p#*/}"
-  docker buildx build $buildArgs "$path"
-done
+buildArgs="--platform=$platform $cache -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load"
 
 if [ "$PUSH" == true ]; then
-  for p in ${platform//,/ } ; do
-    echo_bright_red "Push $rootImage-${p#*/}"
-    docker push "$rootImage-${p#*/}"
-    pushArgs+=" --amend $rootImage-${p#*/}"
-  done
-
-  echo_bright_red "Push manifest $rootImage"
-  docker manifest create "$rootImage" $pushArgs
-  docker manifest push -p "$rootImage"
-
-  echo_bright_red "Push manifest n0rad/$name:latest"
-  docker manifest create "n0rad/$name:latest" $pushArgs
-  docker manifest push -p "n0rad/$name:latest"
+  echo_bright_red "Building / Pushing $name:$tag"
+  docker buildx build $buildArgs --no-cache --push "$path"
+else
+  load=
+  if [ "$LOAD" == true ]; then
+    load="--load"
+  fi
+  echo_bright_red "Building $name:$tag"
+  docker buildx build $buildArgs $load "$path"
 fi
+
+
+# build images separately, push when all ok and unify them in a manifest
+# this is not working correctly because each image must be pushed priorly with his own tag (*-$ARCH) and this breaks sumver version order
+# This could be fixed using https://github.com/docker/cli/issues/3350#issuecomment-1437165524, use buildx to create manifest from local images hashes
+#for p in ${platform//,/ } ; do
+#  buildArgs="--platform=$p $cache --build-arg=ARCH=${p#*/} -t "$rootImage-${p#*/}"  --build-arg=TAG=$tag $load"
+#  echo_bright_red "Build $rootImage-${p#*/}"
+#  docker buildx build $buildArgs "$path"
+#done
+#
+#if [ "$PUSH" == true ]; then
+#  for p in ${platform//,/ } ; do
+#    echo_bright_red "Push $rootImage-${p#*/}"
+#    docker push "$rootImage-${p#*/}"
+#    pushArgs+=" --amend $rootImage-${p#*/}"
+#  done
+#
+#  echo_bright_red "Push manifest $rootImage"
+#  docker manifest create "$rootImage" $pushArgs
+#  docker manifest push -p "$rootImage"
+#
+#  echo_bright_red "Push manifest n0rad/$name:latest"
+#  docker manifest create "n0rad/$name:latest" $pushArgs
+#  docker manifest push -p "n0rad/$name:latest"
+#fi
