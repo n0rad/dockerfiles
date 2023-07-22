@@ -1,8 +1,9 @@
 FROM n0rad/archlinux:1.230722.836-H9796174
 
 RUN \
+    pacman -Syu &&\
     # yay dependencies
-    pacman -Sy --needed --noconfirm wget git base-devel &&\
+    pacman -S --needed --noconfirm wget git base-devel &&\
     # setup yay user
     sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf &&\
     echo "yay:x:20002:20002:yay:/var/lib/yay:/usr/bin/sh" >> /etc/passwd &&\
@@ -19,12 +20,12 @@ RUN \
     \
     # install special arch packages
     case $(uname -m) in \
-      aarch64) echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/makepkg.conf && sudo -u yay yay -Sy linux-aarch64-orangepi5 --noconfirm ;; \
-      x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
+      aarch64) echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/makepkg.conf && sudo -u yay yay -S linux-aarch64-orangepi5 --noconfirm ;; \
+      x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
     # install packages
-    sudo -u yay yay -Sy --noconfirm \
+    sudo -u yay yay -S --noconfirm \
       systemd-sysvcompat dkms \
       gptfdisk hdparm mdadm dosfstools smartmontools \
       pciutils usbutils net-tools bind-tools conntrack-tools \
