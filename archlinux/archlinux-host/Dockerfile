@@ -19,7 +19,7 @@ RUN \
     \
     # install special arch packages
     case $(uname -m) in \
-      aarch64) echo 'MAKEFLAGS="-j4"' >> /etc/makepkg.conf && sudo -u yay yay -Sy linux-aarch64-orangepi5 --noconfirm ;; \
+      aarch64) echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/makepkg.conf && sudo -u yay yay -Sy linux-aarch64-orangepi5 --noconfirm ;; \
       x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
