@@ -2,7 +2,7 @@ FROM n0rad/archlinux:1.230722.836-H9796174
 
 RUN \
     # yay dependencies
-    pacman -Sy --needed wget git base-devel --noconfirm &&\
+    pacman -Sy --needed --noconfirm wget git base-devel &&\
     # setup yay user
     sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf &&\
     echo "yay:x:20002:20002:yay:/var/lib/yay:/usr/bin/sh" >> /etc/passwd &&\
@@ -16,8 +16,15 @@ RUN \
     su -c "/tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay -S yay-bin --noconfirm" yay &&\
     rm /etc/sudoers.d/tmp_yay &&\
     \
-    # install packages \
-    su -c $"yay -Sy --noconfirm \
+    # install special arch packages
+    case $(uname -m) in \
+      aarch64) sudo -u yay yay -Sy linux-aarch64-orangepi5 --noconfirm ;; \
+      x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
+      *) echo "unsupported arch"; exit 1;; \
+    esac &&\
+    # install packages
+    sudo -u yay yay -Sy --noconfirm \
+      systemd-sysvcompat \
       gptfdisk hdparm mdadm dosfstools smartmontools \
       pciutils usbutils net-tools bind-tools conntrack-tools \
       ethtool socat iputils iproute2 \
@@ -25,6 +32,6 @@ RUN \
       htop iftop lsof dfc psmisc ncdu tree nmon \
       openssh \
       vim tmux \
-     " yay &&\
+    &&\
     # cleanup
     rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
