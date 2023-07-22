@@ -1,4 +1,4 @@
-FROM archlinux:base-20230716.0.165339
+FROM n0rad/archlinux:1.230722.2216-H96e2955
 
 RUN pacman -Sy &&\
     pacman-key --init &&\
@@ -14,8 +14,6 @@ RUN pacman -Sy &&\
         gcc
 
 LABEL platform="linux/amd64"
-
-# ADD rootfs /
 
 # cd /usr/share/archiso/configs/releng
 # ./build.sh
