@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.230722.836-H9796174
+FROM n0rad/archlinux:1.230722.2216-H96e2955
 
 RUN \
     pacman -Syu &&\
