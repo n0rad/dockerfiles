@@ -6,16 +6,13 @@ RUN \
     pacman -S --needed --noconfirm wget git base-devel &&\
     # setup yay user
     sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf &&\
-    echo "yay:x:20002:20002:yay:/var/lib/yay:/usr/bin/sh" >> /etc/passwd &&\
-    echo "yay:x:20002:" >> /etc/group &&\
-    echo "yay:x:20002::::::" >> /etc/shadow &&\
+    useradd -d /var/lib/yay -m -s /usr/bin/sh -u 20002 -U yay &&\
     echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay" > /etc/sudoers.d/yay &&\
-    mkdir -p /var/lib/yay && chown yay: /var/lib/yay &&\
     # run yay to install yay
     YAY_VERSION=v11.2.0 &&\
     wget -qO- https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_$(uname -m).tar.gz | tar xvz -C /tmp &&\
     echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay" > /etc/sudoers.d/tmp_yay &&\
-    su -c "/tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay -S yay-bin --noconfirm" yay &&\
+    sudo -u yay /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay -S yay-bin --noconfirm &&\
     rm /etc/sudoers.d/tmp_yay &&\
     \
     # install special arch packages
