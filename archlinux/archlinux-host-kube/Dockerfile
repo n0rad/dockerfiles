@@ -2,10 +2,7 @@ FROM n0rad/archlinux-host:1.230723.1352-Hcb13aef
 
 RUN pacman -Syu --noconfirm &&\
     pacman -Rdd iptables --noconfirm && pacman -S iptables-nft --noconfirm &&\
-    # TODO remove
-    pacman -S dkms --noconfirm && mkdir -p /var/lib/yay && chown yay: /var/lib/yay &&\
     pacman -S --noconfirm \
-      dkms \
       open-iscsi nfs-utils rsync \
       xfsprogs \
       ipset ipvsadm \
