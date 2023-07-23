@@ -1,19 +1,13 @@
 FROM n0rad/archlinux:1.230722.2216-H96e2955
 
 RUN \
-    pacman -Syu &&\
-    # yay dependencies
-    pacman -S --needed --noconfirm wget git base-devel &&\
-    # setup yay user
-    sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf &&\
+    pacman -Syu --noconfirm &&\
+    # yay
+    pacman -S --needed --noconfirm git base-devel &&\
     useradd -d /var/lib/yay -m -s /usr/bin/sh -u 20002 -U yay &&\
     echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/yay" > /etc/sudoers.d/yay &&\
-    # run yay to install yay
-    YAY_VERSION=v11.2.0 &&\
-    wget -qO- https://github.com/Jguer/yay/releases/download/${YAY_VERSION}/yay_${YAY_VERSION#v*}_$(uname -m).tar.gz | tar xvz -C /tmp &&\
-    echo -e "%yay ALL=(ALL) NOPASSWD: /usr/bin/pacman, /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay" > /etc/sudoers.d/tmp_yay &&\
-    sudo -u yay /tmp/yay_${YAY_VERSION#v*}_$(uname -m)/yay -S yay-bin --noconfirm &&\
-    rm /etc/sudoers.d/tmp_yay &&\
+    sed -i -- "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf &&\
+    sudo -u yay sh -c 'git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin && cd /tmp/yay-bin && makepkg -si --noconfirm' &&\
     \
     # install special arch packages
     case $(uname -m) in \
