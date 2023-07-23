@@ -15,3 +15,5 @@ RUN pacman -Syu --noconfirm &&\
     &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
+
+LABEL platform="linux/amd64"

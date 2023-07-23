@@ -3,7 +3,6 @@ FROM n0rad/archlinux-host:1.230723.1352-Hcb13aef
 RUN pacman -Syu --noconfirm &&\
     pacman -Rdd iptables --noconfirm && pacman -S iptables-nft --noconfirm &&\
     pacman -S --noconfirm \
-      dkms \
       open-iscsi nfs-utils rsync \
       xfsprogs \
       ipset ipvsadm \
