@@ -1,5 +1,7 @@
 FROM n0rad/archlinux:1.230722.2216-H96e2955
 
+ADD rootfs /
+
 RUN \
     pacman -Syu --noconfirm &&\
     # yay
@@ -17,10 +19,10 @@ RUN \
         # pacman-key --lsign BA27F219383BB875; &&\
         # echo -e '\n[7Ji]\nServer = https://github.com/7Ji/archrepo/releases/download/$arch\n' >> /etc/pacman.conf; &&\
         # pacman -Sy --noconfirm linux-aarch64-orangepi5 linux-aarch64-orangepi5-headers; \
-        echo 'MAKEFLAGS="-j$(($(nproc)/2))"' >> /etc/makepkg.conf; \
-        git clone https://aur.archlinux.org/linux-aarch64-orangepi5.git /tmp/kernel; \
-        sed -i -- "s/CONFIG_PGTABLE_LEVELS=3/CONFIG_PGTABLE_LEVELS=4/" /tmp/kernel/config; \
-        (cd /tmp/kernel && sudo -u yay makepkg -si --noconfirm); \
+        # echo 'MAKEFLAGS="-j$(($(nproc)/2))"' >> /etc/makepkg.conf; \
+        echo 'MAKEFLAGS="-j$(($(nproc)))"' >> /etc/makepkg.conf; \
+        chown -R yay: /linux-aarch64-orangepi5; \
+        (cd /linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
         ;; \
       x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
