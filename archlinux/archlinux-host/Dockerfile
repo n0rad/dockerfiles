@@ -22,6 +22,7 @@ RUN \
         git clone https://aur.archlinux.org/linux-aarch64-orangepi5.git /tmp/kernel \
         sed -i -- "s/CONFIG_PGTABLE_LEVELS=3/CONFIG_PGTABLE_LEVELS=4/" /tmp/kernel/config \
         (cd /tmp/kernel && sudo -u yay makepkg -si --noconfirm) \
+        ;; \
       x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
