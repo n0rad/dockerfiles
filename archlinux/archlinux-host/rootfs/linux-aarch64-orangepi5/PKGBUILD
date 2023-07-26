@@ -160,8 +160,8 @@ _package-headers() {
   echo "Removing broken symlinks..."
   find -L "${_builddir}" -type l -printf 'Removing %P\n' -delete
 
-  echo "Removing loose objects..."
-  find "${_builddir}" -type f -name '*.o' -printf 'Removing %P\n' -delete
+  #echo "Removing loose objects..."
+  #find "${_builddir}" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
   echo "Stripping build tools..."
   local file
