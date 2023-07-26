@@ -7,6 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PUSH="${PUSH:-false}"
 LOAD="${LOAD:-false}"
+BUILDX_FLAGS="${BUILDX_FLAGS:-}"
 path=$PWD
 
 [ -z "$1" ] || path="$(cd "$1" && pwd)"
@@ -18,7 +19,7 @@ if [ "$platformLabel" != "" ]; then
 fi
 
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
-buildArgs="--platform=$platform -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load"
+buildArgs="--platform=$platform -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load $BUILDX_FLAGS"
 
 if [ "$PUSH" == true ]; then
   echo_bright_red "Building / Pushing $name:$tag"
