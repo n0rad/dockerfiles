@@ -10,10 +10,24 @@ RUN pacman -Syu --noconfirm &&\
     sudo -u yay sh -c 'git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin && cd /tmp/yay-bin && makepkg -si --noconfirm' &&\
     rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
 
-ADD rootfs /
+# install packages
+RUN sudo -u yay yay -Sy --noconfirm \
+      systemd-sysvcompat dkms \
+      gptfdisk hdparm mdadm dosfstools smartmontools \
+      pciutils usbutils net-tools bind-tools conntrack-tools \
+      ethtool socat iputils iproute2 \
+      sudo grep curl wget downgrade \
+      htop iftop lsof dfc psmisc ncdu tree nmon \
+      openssh \
+      vim tmux \
+    &&\
+    # cleanup
+    rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
 
 # kernel + boot
+ADD rootfs /
 RUN --mount=type=cache,target=/build \
+    pacman -Sy &&\
     case $(uname -m) in \
       aarch64) \
         # use 7Ji repo; \
@@ -29,18 +43,4 @@ RUN --mount=type=cache,target=/build \
       x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
-    rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
-
-# install packages
-RUN sudo -u yay yay -Sy --noconfirm \
-      systemd-sysvcompat dkms \
-      gptfdisk hdparm mdadm dosfstools smartmontools \
-      pciutils usbutils net-tools bind-tools conntrack-tools \
-      ethtool socat iputils iproute2 \
-      sudo grep curl wget downgrade \
-      htop iftop lsof dfc psmisc ncdu tree nmon \
-      openssh \
-      vim tmux \
-    &&\
-    # cleanup
     rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
