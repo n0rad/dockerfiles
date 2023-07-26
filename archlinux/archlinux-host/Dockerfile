@@ -2,7 +2,7 @@ FROM n0rad/archlinux:1.230722.2216-H96e2955
 
 ADD rootfs /
 
-RUN \
+RUN --mount=type=cache,target=/build\
     pacman -Syu --noconfirm &&\
     # yay
     pacman -S --needed --noconfirm git base-devel &&\
@@ -21,8 +21,8 @@ RUN \
         # pacman -Sy --noconfirm linux-aarch64-orangepi5 linux-aarch64-orangepi5-headers; \
         # echo 'MAKEFLAGS="-j$(($(nproc)/2))"' >> /etc/makepkg.conf; \
         echo 'MAKEFLAGS="-j$(($(nproc)))"' >> /etc/makepkg.conf; \
-        chown -R yay: /linux-aarch64-orangepi5; \
-        (cd /linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
+        cp -a /linux-aarch64-orangepi5/ /build/ && chown -R yay: /build; \
+        (cd /build && sudo -u yay makepkg -si --noconfirm); \
         ;; \
       x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
