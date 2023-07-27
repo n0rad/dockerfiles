@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.230727.824-Haf71525
+FROM n0rad/archlinux-host:1.230727.1342-H8bac33c
 
 RUN pacman -Syu --noconfirm &&\
     pacman -Rdd iptables --noconfirm && pacman -S iptables-nft --noconfirm &&\
