@@ -6,7 +6,9 @@ on:
 jobs:
   push:
     runs-on: ubuntu-latest
-    #if: github.event_name == 'push'
+    permissions:
+      id-token: write # This is required for using the docker cache
+      contents: read
 
     steps:
       - uses: actions/checkout@v3
@@ -22,9 +24,22 @@ jobs:
       - name: Log into registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
+      - name: calculate envvars needed for docker caching
+        shell: bash
+        run: |
+          echo "Configuring environment for https://docs.docker.com/build/cache/backends/gha/"
+          # derive the cache URL from the token URL, converting something like
+          # https://pipelines.actions.githubusercontent.com/<a long id>/<a lot of things>
+          # to something like
+          # https://artifactcache.actions.githubusercontent.com/<the long id from above>/
+          ACTIONS_CACHE_URL=$(echo "$ACTIONS_ID_TOKEN_REQUEST_URL" | grep -Po 'https://[^/]+/[^/]+/' | sed  's/pipelines/artifactcache/')
+          echo "ACTIONS_CACHE_URL=$ACTIONS_CACHE_URL" >> "$GITHUB_ENV"
+          echo "ACTIONS_RUNTIME_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN" >> "$GITHUB_ENV"
+
       - name: Build/Push image
         run: |
           branch=${GITHUB_REF##*/}
+          export BUILDX_FLAGS="--cache-to "type=gha,mode=max" --cache-from type=gha"
           if [ "$branch" == "master" ]; then
             export PUSH=true
             export CACHE=false

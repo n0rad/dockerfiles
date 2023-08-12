@@ -7,6 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PUSH="${PUSH:-false}"
 LOAD="${LOAD:-false}"
+BUILDX_FLAGS="${BUILDX_FLAGS:-}"
 path=$PWD
 
 [ -z "$1" ] || path="$(cd "$1" && pwd)"
@@ -18,12 +19,11 @@ if [ "$platformLabel" != "" ]; then
 fi
 
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
-rootImage="n0rad/$name:$tag"
-buildArgs="--platform=$platform $cache -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load"
+buildArgs="--platform=$platform -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load $BUILDX_FLAGS"
 
 if [ "$PUSH" == true ]; then
   echo_bright_red "Building / Pushing $name:$tag"
-  docker buildx build $buildArgs --no-cache --push "$path"
+  docker buildx build $buildArgs --push "$path"
 else
   load=
   if [ "$LOAD" == true ]; then
@@ -37,6 +37,7 @@ fi
 # build images separately, push when all ok and unify them in a manifest
 # this is not working correctly because each image must be pushed priorly with his own tag (*-$ARCH) and this breaks sumver version order
 # This could be fixed using https://github.com/docker/cli/issues/3350#issuecomment-1437165524, use buildx to create manifest from local images hashes
+#rootImage="n0rad/$name:$tag"
 #for p in ${platform//,/ } ; do
 #  buildArgs="--platform=$p $cache --build-arg=ARCH=${p#*/} -t "$rootImage-${p#*/}"  --build-arg=TAG=$tag $load"
 #  echo_bright_red "Build $rootImage-${p#*/}"
