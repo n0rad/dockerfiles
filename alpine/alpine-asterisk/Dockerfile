@@ -1,4 +1,4 @@
-FROM alpine:3.18.3
+FROM alpine:3.18.4
 
 
 RUN apk add --no-cache asterisk asterisk-sample-config asterisk-sounds-en asterisk-sounds-moh

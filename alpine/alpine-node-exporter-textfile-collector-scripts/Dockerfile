@@ -1,4 +1,4 @@
-FROM alpine:3.18.3
+FROM alpine:3.18.4
 
 RUN apk add git bash mdadm moreutils smartmontools python3 pacman && rm -rf /var/cache/apk/*
 
