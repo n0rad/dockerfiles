@@ -1,7 +1,5 @@
 FROM n0rad/archlinux-host:1.230727.1725-H3948044
 
-ADD rootfs /
-
 RUN cp -a /rootfs-$(uname -m)/* / &&\
     pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
