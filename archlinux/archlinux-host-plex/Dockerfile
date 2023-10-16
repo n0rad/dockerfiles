@@ -1,7 +1,6 @@
 FROM n0rad/archlinux-host:1.230727.1725-H3948044
 
-RUN cp -a /rootfs-$(uname -m)/* / &&\
-    pacman -Syu --noconfirm &&\
+RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
       xorg xorg-xinit \
       xterm \
