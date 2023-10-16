@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20210804
+FROM ubuntu:22.04
 
 # pht
 RUN apt-get update && \
