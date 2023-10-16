@@ -39,7 +39,7 @@ jobs:
       - name: Build/Push image
         run: |
           branch=${GITHUB_REF##*/}
-          export BUILDX_FLAGS="--cache-to "type=gha,mode=max" --cache-from type=gha"
+#          export BUILDX_FLAGS="--cache-to "type=gha,mode=max" --cache-from type=gha"
           if [ "$branch" == "master" ]; then
             export PUSH=true
             export CACHE=false
