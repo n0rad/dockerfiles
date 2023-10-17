@@ -13,6 +13,7 @@ RUN pacman -Syu --noconfirm &&\
 # install packages
 RUN sudo -u yay yay -Sy --noconfirm \
       systemd-sysvcompat dkms \
+      plymouth plymouth-theme-monoarch \
       gptfdisk hdparm mdadm dosfstools smartmontools \
       pciutils usbutils net-tools bind-tools conntrack-tools \
       ethtool socat iputils iproute2 \
@@ -43,4 +44,5 @@ RUN --mount=type=cache,target=/build \
       x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
+    rm -Rf /linux-aarch64-orangepi5 &&\
     rm -Rf /tmp/* /var/cache/pacman/* /var/lib/pacman/sync/*
