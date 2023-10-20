@@ -17,9 +17,13 @@ platformLabel=$(cat "$path/Dockerfile" | grep -i "^label " | awk -F "[ =]*" '{pr
 if [ "$platformLabel" != "" ]; then
     platform="$platformLabel"
 fi
+nocache=
+if [ "$PUSH" == true ]; then
+	nocache="--no-cache"
+fi
 
 tag="1.$(date -u '+%y%m%d').$(date -u '+%H%M' | awk '{print $0+0}')-H$(git rev-parse --short HEAD)"
-buildArgs="--platform=$platform -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load $BUILDX_FLAGS"
+buildArgs="$nocache --platform=$platform -t n0rad/$name:$tag -t n0rad/$name:latest --build-arg=TAG=$tag $load $BUILDX_FLAGS"
 
 if [ "$PUSH" == true ]; then
   echo_bright_red "Building / Pushing $name:$tag"
