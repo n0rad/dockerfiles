@@ -4,10 +4,7 @@ RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
       xorg xorg-xinit \
       accountsservice lightdm lightdm-gtk-greeter \
-      pipewire \
-      networkmanager network-manager-applet \
-      mate mate-extra \
-      unclutter \
+      openbox \
     &&\
     # special arch
     case $(uname -m) in \
