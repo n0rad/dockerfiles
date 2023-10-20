@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.231020.930-H12d4c97
+FROM n0rad/archlinux-host:1.231020.1414-Hdc34f0c
 
 RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
