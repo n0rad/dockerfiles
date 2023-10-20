@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.230722.2216-H96e2955
+FROM n0rad/archlinux:1.231020.914-H2056335
 
 RUN pacman -Sy &&\
     pacman-key --init &&\
