@@ -13,7 +13,6 @@ RUN pacman -Syu --noconfirm &&\
 # install packages
 RUN sudo -u yay yay -Sy --noconfirm \
       systemd-sysvcompat dkms \
-      plymouth plymouth-theme-monoarch plymouth-theme-arch-logo \
       gptfdisk hdparm mdadm dosfstools smartmontools \
       pciutils usbutils net-tools bind-tools conntrack-tools \
       ethtool socat iputils iproute2 \
