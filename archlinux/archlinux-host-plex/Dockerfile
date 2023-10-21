@@ -4,7 +4,8 @@ RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
       xorg xorg-xinit \
       accountsservice lightdm lightdm-gtk-greeter \
-      openbox \
+      iwd \
+      openbox xterm \
     &&\
     # special arch
     case $(uname -m) in \

@@ -35,13 +35,14 @@ RUN --mount=type=cache,target=/build \
         # pacman-key --recv-keys BA27F219383BB875; &&\
         # pacman-key --lsign BA27F219383BB875; &&\
         # echo -e '\n[7Ji]\nServer = https://github.com/7Ji/archrepo/releases/download/$arch\n' >> /etc/pacman.conf; &&\
-        # pacman -Sy --noconfirm linux-aarch64-orangepi5 linux-aarch64-orangepi5-headers; \
+        # pacman -S --noconfirm linux-aarch64-orangepi5 linux-aarch64-orangepi5-headers; \
         # echo 'MAKEFLAGS="-j$(($(nproc)/2))"' >> /etc/makepkg.conf; \
         echo 'MAKEFLAGS="-j$(($(nproc)))"' >> /etc/makepkg.conf; \
         cp -a /linux-aarch64-orangepi5/ /build/ && chown -R yay: /build; \
         (cd /build/linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
+        pacman -S linux-firmware; \
         ;; \
-      x86_64) pacman -Sy --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
+      x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
     rm -Rf /linux-aarch64-orangepi5 &&\
