@@ -39,7 +39,7 @@ RUN --mount=type=cache,target=/build \
         echo 'MAKEFLAGS="-j$(($(nproc)))"' >> /etc/makepkg.conf; \
         cp -a /linux-aarch64-orangepi5/ /build/ && chown -R yay: /build; \
         (cd /build/linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
-        pacman -S linux-firmware; \
+        pacman -S --noconfirm linux-firmware; \
         ;; \
       x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \

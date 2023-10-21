@@ -4,7 +4,7 @@ RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
       xorg xorg-xinit \
       accountsservice lightdm lightdm-gtk-greeter \
-      iwd \
+      pulseaudio iwd \
       openbox xterm \
     &&\
     # special arch
