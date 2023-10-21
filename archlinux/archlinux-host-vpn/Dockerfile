@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.231020.1414-Hdc34f0c
+FROM n0rad/archlinux-host:1.231021.1355-Hb89ccaa
 
 RUN \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
