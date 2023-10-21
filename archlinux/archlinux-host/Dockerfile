@@ -41,7 +41,7 @@ RUN --mount=type=cache,target=/build \
         (cd /build/linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
         pacman -S --noconfirm linux-firmware; \
         ;; \
-      x86_64) pacman -S --noconfirm syslinux linux linux-headers efibootmgr intel-ucode;; \
+      x86_64) pacman -S --noconfirm syslinux linux linux-headers linux-firmware efibootmgr intel-ucode;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
     rm -Rf /linux-aarch64-orangepi5 &&\
