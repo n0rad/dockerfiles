@@ -1,7 +1,6 @@
 FROM n0rad/archlinux-host:1.231021.1355-Hb89ccaa
 
-RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
-    pacman -Syu --noconfirm &&\
+RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
       networkmanager \
       gnome gnome-browser-connector gnome-bluetooth-3.0 \
@@ -9,7 +8,6 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.
       bc yq jq ipcalc \
       \
       sshfs \
-      wine winetricks \
       \
       bluez \
       firefox chromium \
@@ -26,13 +24,27 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.
     sudo -u yay yay -S --noconfirm \
       # legacy app tray icon support in gnome3, like syncthing-gtk
       lib-appindicator-gtk3 \
-      dxvk-bin \
       syncthing-gtk \
       goss-bin \
       git-trim-bin \
     &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
+
+
+#echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
+#      wine winetricks \
+#      dxvk-bin \
+
+# gnome-shell-extension-appindicator \
+# gnome-shell-extension-dash-to-panel \
+# gnome-shell-extension-order-icons-git \
+# gnome-shell-extension-system-monitor-next-git \
+# gnome-shell-extension-weather-oclock-git \
+# gnome-shell-extension-wallpaper-slideshow
+# gnome-shell-extension-executor
+# gnome-shell-extension-workspace-indicator
+# gnome-shell-extension-workspace-matrix
 
 
 
