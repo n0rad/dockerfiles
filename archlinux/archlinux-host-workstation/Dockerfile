@@ -24,14 +24,18 @@ RUN pacman -Syu --noconfirm &&\
     sudo -u yay yay -S --noconfirm \
       # legacy app tray icon support in gnome3, like syncthing-gtk
       lib-appindicator-gtk3 \
-      syncthing-gtk \
     &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
 
 
+# TODO: not available on arm
 #      goss-bin \
 #      git-trim-bin \
+#      syncthing-gtk \
+
+
+
 
 #echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
 #      wine winetricks \
