@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.231021.1355-Hb89ccaa
+FROM n0rad/archlinux-host:1.231022.1346-Hac246fa
 
 RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
@@ -19,7 +19,7 @@ RUN pacman -Syu --noconfirm &&\
       ffmpeg x264 x265 flac \
       docker kubectl k9s helm kubeseal stern \
       terraform terraform-docs-bin \
-      go npm gradle maven \
+      go npm yarn gradle maven \
       tig tk the_silver_searcher github-cli \
     &&\
     sudo -u yay yay -S --noconfirm \
