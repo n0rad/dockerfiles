@@ -41,7 +41,8 @@ RUN --mount=type=cache,target=/build \
         (cd /build/linux-aarch64-orangepi5 && sudo -u yay makepkg -si --noconfirm); \
         pacman -S --noconfirm linux-firmware; \
         ;; \
-      x86_64) pacman -S --noconfirm syslinux linux linux-headers linux-firmware efibootmgr intel-ucode;; \
+      # intel-media-driver looks buggy, check with vainfo from libva-utils. building it looks good
+      x86_64) sudo -u yay yay -Sy --noconfirm syslinux linux linux-headers linux-firmware efibootmgr intel-ucode intel-media-driver-git;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
     rm -Rf /linux-aarch64-orangepi5 &&\

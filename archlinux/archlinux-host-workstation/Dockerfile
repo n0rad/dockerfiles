@@ -16,8 +16,8 @@ RUN pacman -Syu --noconfirm &&\
       bc yq jq ipcalc \
       sshfs \
       tmux tmux-cssh xsel \
-      ffmpeg x264 x265 flac \
-      docker kubectl k9s helm kubeseal stern \
+      mplayer ffmpeg x264 x265 flac \
+      docker docker-compose kubectl k9s helm kubeseal stern \
       terraform terraform-docs-bin \
       go npm yarn gradle maven \
       tig tk the_silver_searcher github-cli \
