@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.231021.1355-Hb89ccaa
+FROM n0rad/archlinux-host:1.231104.1416-Hdcae509
 
 RUN pacman -Syu --noconfirm &&\
     pacman -S --noconfirm \
@@ -7,18 +7,18 @@ RUN pacman -Syu --noconfirm &&\
       gnome gnome-browser-connector gnome-bluetooth-3.0 pipewire pipewire-pulse dconf-editor \
       firefox chromium \
       keepassxc guake \
-      gimp code meld \
+      gimp meld \
       \
       wavemon powertop \
       less \
-      zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting oh-my-zsh-git \
+      zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting  \
       grc pygmentize z thefuck \
       bc yq jq ipcalc \
       sshfs \
-      tmux tmux-cssh xsel \
+      tmux  xsel \
       mplayer ffmpeg x264 x265 flac \
-      docker docker-compose kubectl k9s helm kubeseal stern \
-      terraform terraform-docs-bin \
+      docker docker-buildx docker-compose kubectl k9s helm kubeseal stern \
+      terraform \
       go npm yarn gradle maven \
       tig tk the_silver_searcher github-cli \
     &&\
@@ -28,19 +28,22 @@ RUN pacman -Syu --noconfirm &&\
       goland \
       flux-bin \
       powerline-go \
-      google-cloud-cli google-cloud-cli-gke-gcloud-auth-plugin \
+      google-cloud-cli  \
+      terraform-docs-bin \
+      oh-my-zsh-git \
+      tmux-cssh \
     &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
 
+# google-cloud-cli-gke-gcloud-auth-plugin
 
 # TODO: not available on arm
 #      goss-bin \
 #      git-trim-bin \
 #      syncthing-gtk \
 
-
-
+#       aur/visual-studio-code-bin / code
 
 #echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
 #      wine winetricks dxvk-bin \
@@ -61,9 +64,7 @@ RUN pacman -Syu --noconfirm &&\
 #    vulkan-intel \
 #    accountsservice \
 #    rsync \
-#    xdg-user-dirs \
 #    gvfs-mtp \
-#    mint-x-icons numix-themes-darkblue \
 #    cpio \
 #    p7zip \
 #    tcpdump wireshark-qt gnu-netcat \
@@ -76,4 +77,6 @@ RUN pacman -Syu --noconfirm &&\
 #    yt-dlp \
 #    sane xsane cups pdftk tesseract tesseract-data-fra \
 #    gutenprint \
+#    xdg-user-dirs \
+#    mint-x-icons numix-themes-darkblue \
 #    quicktile-git \

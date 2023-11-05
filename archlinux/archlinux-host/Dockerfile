@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.231020.914-H2056335
+FROM n0rad/archlinux:1.231104.1359-Hdcae509
 
 # yay
 RUN pacman -Syu --noconfirm &&\
@@ -42,7 +42,7 @@ RUN --mount=type=cache,target=/build \
         pacman -S --noconfirm linux-firmware; \
         ;; \
       # intel-media-driver looks buggy, check with vainfo from libva-utils. building it looks good
-      x86_64) sudo -u yay yay -Sy --noconfirm syslinux linux linux-headers linux-firmware efibootmgr intel-ucode intel-media-driver-git;; \
+      x86_64) sudo -u yay yay -Sy --noconfirm syslinux linux linux-headers linux-firmware efibootmgr intel-ucode intel-media-driver-git vulkan-intel;; \
       *) echo "unsupported arch"; exit 1;; \
     esac &&\
     rm -Rf /linux-aarch64-orangepi5 &&\
