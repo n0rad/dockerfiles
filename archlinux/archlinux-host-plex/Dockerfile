@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.231021.1355-Hb89ccaa
+FROM n0rad/archlinux-host:1.231104.1416-Hdcae509
 
 COPY rootfs /
 
