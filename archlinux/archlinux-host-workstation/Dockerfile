@@ -1,12 +1,13 @@
 FROM n0rad/archlinux-host:1.231104.1416-Hdcae509
 
 RUN pacman -Syu --noconfirm &&\
-    pacman -S --noconfirm \
+    sudo -u yay yay -S --noconfirm \
       networkmanager bluez \
       \
       gnome gnome-browser-connector gnome-bluetooth-3.0 pipewire pipewire-pulse dconf-editor \
       firefox chromium \
-      keepassxc guake \
+      keepassxc sops guake \
+      syncthing \
       gimp meld \
       \
       wavemon powertop \
@@ -21,10 +22,6 @@ RUN pacman -Syu --noconfirm &&\
       terraform \
       go npm yarn gradle maven \
       tig tk the_silver_searcher github-cli \
-    &&\
-    sudo -u yay yay -S --noconfirm \
-      # legacy app tray icon support in gnome3, like syncthing-gtk
-      lib-appindicator-gtk3 \
       goland \
       flux-bin \
       powerline-go \
@@ -32,18 +29,25 @@ RUN pacman -Syu --noconfirm &&\
       terraform-docs-bin \
       oh-my-zsh-git \
       tmux-cssh \
+      quicktile-git \
     &&\
+    case $(uname -m) in \
+      aarch64) \
+        pacman -S --noconfirm linux-firmware; \
+        ;; \
+      # intel-media-driver looks buggy, check with vainfo from libva-utils. building it looks good
+      x86_64)  \
+        sudo -u yay yay -Sy --noconfirm \
+          code \
+          goss-bin \
+          syncthing-gtk lib-appindicator-gtk3 \
+          git-trim-bin \
+          google-cloud-cli-gke-gcloud-auth-plugin \
+          wine winetricks dxvk-bin \
+    esac &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
 
-# google-cloud-cli-gke-gcloud-auth-plugin
-
-# TODO: not available on arm
-#      goss-bin \
-#      git-trim-bin \
-#      syncthing-gtk \
-
-#       aur/visual-studio-code-bin / code
 
 #echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf &&\
 #      wine winetricks dxvk-bin \
@@ -79,4 +83,4 @@ RUN pacman -Syu --noconfirm &&\
 #    gutenprint \
 #    xdg-user-dirs \
 #    mint-x-icons numix-themes-darkblue \
-#    quicktile-git \
+#     \
