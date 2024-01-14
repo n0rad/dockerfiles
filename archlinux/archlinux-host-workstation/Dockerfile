@@ -12,7 +12,7 @@ RUN pacman -Syu --noconfirm &&\
       \
       wavemon powertop \
       less \
-      zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting  \
+      zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
       grc pygmentize z thefuck \
       bc yq jq ipcalc \
       sshfs \
@@ -35,7 +35,6 @@ RUN pacman -Syu --noconfirm &&\
       aarch64) \
         pacman -S --noconfirm linux-firmware; \
         ;; \
-      # intel-media-driver looks buggy, check with vainfo from libva-utils. building it looks good
       x86_64)  \
         sudo -u yay yay -Sy --noconfirm \
           code \
@@ -44,6 +43,7 @@ RUN pacman -Syu --noconfirm &&\
           git-trim-bin \
           google-cloud-cli-gke-gcloud-auth-plugin \
           wine winetricks dxvk-bin \
+        ;; \
     esac &&\
     # cleanup
     rm -Rf /var/cache/pacman/pkg/* /var/lib/pacman/sync/* /var/lib/yay/.cache
