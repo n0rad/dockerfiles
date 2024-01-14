@@ -3,6 +3,7 @@ FROM n0rad/archlinux-host:1.231104.1416-Hdcae509
 RUN pacman -Sy --noconfirm archlinux-keyring &&\
     pacman -Syu --noconfirm &&\
     sudo -u yay yay -S --noconfirm \
+      plymouth plymouth-theme-monoarch plymouth-theme-arch-logo \
       networkmanager bluez \
       \
       gnome gnome-browser-connector gnome-bluetooth-3.0 pipewire pipewire-pulse dconf-editor \
