@@ -6,7 +6,7 @@ RUN pacman -Sy --noconfirm archlinux-keyring &&\
       networkmanager bluez \
       \
       gnome gnome-browser-connector gnome-bluetooth-3.0 pipewire pipewire-pulse dconf-editor \
-      nemo \
+      nemo mint-x-icons \
       firefox chromium \
       keepassxc sops guake \
       syncthing \
