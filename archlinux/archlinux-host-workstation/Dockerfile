@@ -1,6 +1,6 @@
 FROM n0rad/archlinux-host:1.231104.1416-Hdcae509
 
-RUN pacman -Syu --noconfirm archlinux-keyring &&\
+RUN pacman -Sy --noconfirm archlinux-keyring &&\
     pacman -Syu --noconfirm &&\
     sudo -u yay yay -S --noconfirm \
       networkmanager bluez \
