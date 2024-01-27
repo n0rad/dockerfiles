@@ -1,4 +1,4 @@
-FROM alpine:3.19.0
+FROM alpine:3.19.1
 
 RUN apk add --no-cache wireguard-tools iptables ip6tables iproute2 curl iputils speedtest-cli
 
