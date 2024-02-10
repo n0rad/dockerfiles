@@ -3,7 +3,7 @@ FROM n0rad/archlinux:1.231020.914-H2056335 AS builder
 ADD rootfs-builder /
 
 # reinstall pacman to have the default config
-RUN pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
+RUN pacman -Sy --noconfirm archlinux-keyring && (pacman -S --noconfirm archlinuxarm-keyring || true) &&\
     mv /etc/pacman.conf /etc/pacman.conf-build &&\
     pacman -Sy pacman --noconfirm --config=/etc/pacman.conf-build &&\
     cat /etc/pacman.d/noextract.conf >> /etc/pacman.conf
@@ -35,7 +35,12 @@ ARG TAG=0.0.0
 COPY --from=builder /archlinux /
 ADD rootfs /
 
-RUN pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
+# master key on archlinuxarm is sha1 which is deprecated by gnupg &&\
+# https://archlinuxarm.org/forum/viewtopic.php?f=15&t=16701#p72081 &&\
+RUN pacman-key --init &&\
+    sed -i '1iallow-weak-key-signatures' /etc/pacman.d/gnupg/gpg.conf &&\
+    \
+    pacman-key --init && pacman-key --populate archlinux && (pacman-key --populate archlinuxarm || true) &&\
     ln -fs /usr/lib/os-release etc/os-release &&\
     echo "VERSION_ID=$TAG" >> /etc/os-release &&\
     update-ca-trust &&\

@@ -1,7 +1,8 @@
-FROM n0rad/archlinux:1.231105.1116-Hd400e17
+FROM n0rad/archlinux:1.240210.1521-H9ba798b
 
 # yay
-RUN pacman -Syu --noconfirm &&\
+RUN pacman -Sy --noconfirm archlinux-keyring && (pacman -S --noconfirm archlinuxarm-keyring || true) &&\
+    pacman -Su --noconfirm &&\
     # yay
     pacman -S --needed --noconfirm git base-devel &&\
     useradd -d /var/lib/yay -m -s /usr/bin/sh -u 20002 -U yay &&\
@@ -13,6 +14,7 @@ RUN pacman -Syu --noconfirm &&\
 # install packages
 RUN sudo -u yay yay -Sy --noconfirm \
       systemd-sysvcompat dkms \
+      btrfs-progs \
       gptfdisk hdparm mdadm dosfstools smartmontools \
       pciutils usbutils net-tools bind-tools conntrack-tools \
       ethtool socat iputils iproute2 \
