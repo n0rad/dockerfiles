@@ -1,4 +1,4 @@
-FROM n0rad/archlinux:1.240210.1521-H9ba798b
+FROM n0rad/archlinux:1.240210.2141-Hc9559c8
 
 # yay
 RUN pacman -Sy --noconfirm archlinux-keyring && (pacman -S --noconfirm archlinuxarm-keyring || true) &&\
