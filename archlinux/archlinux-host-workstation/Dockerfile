@@ -25,7 +25,7 @@ RUN pacman -Sy --noconfirm archlinux-keyring &&\
       terraform \
       go npm yarn gradle maven \
       tig tk the_silver_searcher github-cli \
-      goland \
+      goland graphviz \
       flux-bin \
       powerline-go \
       google-cloud-cli  \
