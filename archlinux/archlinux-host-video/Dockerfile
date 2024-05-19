@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.240210.1540-H9ba798b
+FROM n0rad/archlinux-host:1.240519.921-Hb7ffa10
 
 COPY rootfs /
 
@@ -11,9 +11,11 @@ RUN pacman -Syu --noconfirm &&\
     &&\
     git clone https://git.suckless.org/dwm /tmp/dwm &&\
     (cd /tmp/dwm && git checkout 6.4 && GIT_COMMITTER_NAME=me EMAIL=me@myself git am /tmp/0001-no-bar-no-border.patch && make && mv dwm /usr/bin ) &&\
+    pacman -S flatpak --noconfirm &&\
+    flatpak install -y flathub com.github.iwalton3.jellyfin-media-player &&\
     # special arch
     case $(uname -m) in \
-      x86_64) pacman -S flatpak --noconfirm && flatpak install -y flathub tv.plex.PlexHTPC;; \
+      x86_64) flatpak install -y flathub tv.plex.PlexHTPC;; \
       aarch64) echo TODO ;; \
     esac &&\
     # cleanup

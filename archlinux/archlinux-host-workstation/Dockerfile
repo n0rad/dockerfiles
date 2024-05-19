@@ -1,4 +1,4 @@
-FROM n0rad/archlinux-host:1.240210.1540-H9ba798b
+FROM n0rad/archlinux-host:1.240519.921-Hb7ffa10
 
 RUN pacman -Sy --noconfirm archlinux-keyring &&\
     pacman -Syu --noconfirm &&\
