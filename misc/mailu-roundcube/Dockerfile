@@ -1,7 +1,7 @@
 FROM ghcr.io/mailu/roundcube:1.9.50
 
 # renovate: datasource=github-tags depName=r3c/custom_from
-ENV CUSTOM_FROM_VERSION=1.8.0
+ENV CUSTOM_FROM_VERSION=1.8.1
 # renovate: datasource=github-tags depName=stremlau/html5_notifier
 ENV HTLM5_NOTIFIER_VERSION=v0.6.4
 # renovate: datasource=github-tags depName=mike-kfed/roundcube-thunderbird_labels
