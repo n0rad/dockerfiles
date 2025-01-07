@@ -1,4 +1,4 @@
-FROM alpine:3.21.0
+FROM alpine:3.21.1
 
 RUN apk add --no-cache coredns upx &&\
     upx --best /usr/bin/coredns &&\

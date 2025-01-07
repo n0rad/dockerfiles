@@ -1,4 +1,4 @@
-FROM alpine:3.21.0
+FROM alpine:3.21.1
 
 RUN apk add --no-cache qemu-system-$(uname -m) $([ "$(uname -m)" == "x86_64" ] && echo "ovmf") tini
 
